@@ -22,6 +22,6 @@ Functionally, the Apply for Landing application user journey consists of the fol
 4. The user enters their **personal details** into the application, including their Pilot License Identifier
 5. The user supplies information about the **spacecraft** they will be piloting, including their Spacecraft Registration Identifier
 6. The completed application is then displayed in its entirety to allow the user to check for errors. At this point the user can either edit their answers or proceed to the next step.
-7. The application issues a permit to the user.
+7. The application issues a **landing permit** to the user.
 
 Data validation is performed at each step, preventing the user from continuing until all information has been supplied in the correct format. As a result, Step 7 (approval) can be assumed to occur automatically once the first 6 steps are complete.
