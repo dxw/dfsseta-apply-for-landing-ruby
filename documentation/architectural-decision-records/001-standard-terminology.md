@@ -24,3 +24,6 @@ The following list of terms shall be used to refer to core components of the ser
 * **Spacecraft** A vehicle capable of transporting a Pilot to a Destination
 * **Spacecraft Registration Identifier** or **Registration ID** A unique identifier assigned to each Spacecraft
 
+## Status
+
+Proposal
