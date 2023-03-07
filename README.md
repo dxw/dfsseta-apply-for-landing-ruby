@@ -16,7 +16,7 @@ The Apply for Landing application is intended to serve as a reference model inst
 
 Functionally, the Apply for Landing application user journey consists of the following steps:
 
-1. A **landing page** informs the user of the purpose of the application and the information they will need to supply in the course of completing it.
+1. A **start page** informs the user of the purpose of the application and the information they will need to supply in the course of completing it.
 2. The user (assumed to be a spacecraft pilot) selects a **destination** for their spacecraft journey. This destination must be a Landable Body (that is to say, a planet or a moon).
 3. The user chooses an **arrival** and a **departure** date for their visit.
 4. The user enters their **personal details** into the application, including their Pilot License Identifier
