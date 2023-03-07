@@ -2,7 +2,7 @@
 
 ## Context
 
-Names are difficult; the fact that the Apply for Landing service will be developed in various languages by teams working largely independently of each other makes them more so. To ensure clarity and lack of ambiguity in communicating about the service, a set of standard terms is neededd.
+Names are difficult; the fact that the Apply for Landing service will be developed in various languages by teams working largely independently of each other makes them more so. To ensure clarity and lack of ambiguity in communicating about the service, a set of standard terms is needed.
 
 ## Decision
 
