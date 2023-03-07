@@ -25,3 +25,7 @@ Functionally, the Apply for Landing application user journey consists of the fol
 7. The application issues a **landing permit** to the pilot.
 
 Data validation is performed at each step, preventing the user from continuing until all information has been supplied in the correct format. As a result, Step 7 (approval) can be assumed to occur automatically once the first 6 steps are complete.
+
+## Terminology
+
+See [ADR 0012: Standard terminology for the Apply for Landing service](./doc/architecture/decisions/0012-standard-terminology.md-standard-terminology.md) for details of how we refer to the entities within this domain.
