@@ -7,9 +7,13 @@
     "lint:format": "prettier --check '**/*'",
     "lint:format:fix": "prettier --write '**/*'",
     "lint:js": "eslint .",
-    "lint:js:fix": "yarn run lint:js --fix"
+    "lint:js:fix": "yarn run lint:js --fix",
+    "build": "rollup -c --bundleConfigAsCjs rollup.config.js"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "rollup": "^3.19.1"
+  },
   "devDependencies": {
     "eslint": "^8.18.0",
     "eslint-config-prettier": "^8.5.0",
