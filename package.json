@@ -8,11 +8,13 @@
     "lint:format:fix": "prettier --write '**/*'",
     "lint:js": "eslint .",
     "lint:js:fix": "yarn run lint:js --fix",
-    "build": "rollup -c --bundleConfigAsCjs rollup.config.js"
+    "build": "rollup -c --bundleConfigAsCjs rollup.config.js",
+    "build:css": "sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules --quiet-deps"
   },
   "dependencies": {
     "@rollup/plugin-node-resolve": "^15.0.1",
-    "rollup": "^3.19.1"
+    "rollup": "^3.19.1",
+    "sass": "^1.59.2"
   },
   "devDependencies": {
     "eslint": "^8.18.0",
