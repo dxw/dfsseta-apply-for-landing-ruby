@@ -16,6 +16,8 @@ RSpec.feature "Step 0: Start page - Pilot understands service before engaging" d
     visit "/"
     should_see_what_the_service_can_provide
     should_see_what_information_i_will_need_to_provide
+    when_i_choose_to_use_the_service
+    then_i_should_find_myself_on_the_first_step_of_the_service
   end
 
   # helpers
@@ -37,6 +39,14 @@ RSpec.feature "Step 0: Start page - Pilot understands service before engaging" d
     should_see_that_i_will_need_to_provide("vehicle registration number")
 
     should_see_explanation_of_non_working_days
+  end
+
+  def when_i_choose_to_use_the_service
+    click_link("Start now")
+  end
+
+  def then_i_should_find_myself_on_the_first_step_of_the_service
+    should_see_destination_question_step
   end
 
   # sub-helpers
@@ -80,5 +90,10 @@ RSpec.feature "Step 0: Start page - Pilot understands service before engaging" d
 
   def should_see_explanation_of_non_working_days
     expect(page).to have_content("not all dates are available on all destinations")
+  end
+
+  def should_see_destination_question_step
+    expect(page).to have_content("destination")
+    expect(page).to have_content("Tell us which landable body you are planning to visit")
   end
 end
