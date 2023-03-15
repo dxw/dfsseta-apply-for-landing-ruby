@@ -15,6 +15,7 @@ RSpec.feature "Step 0: Start page - Pilot understands service before engaging" d
   scenario "Step 0: Start page - pilot reviews information about service" do
     visit "/"
     should_see_what_the_service_can_provide
+    should_see_what_information_i_will_need_to_provide
   end
 
   # helpers
@@ -24,6 +25,18 @@ RSpec.feature "Step 0: Start page - Pilot understands service before engaging" d
     should_see_welcome
     should_see_overview
     should_see_list_of_landable_bodies
+  end
+
+  def should_see_what_information_i_will_need_to_provide
+    should_see_that_i_will_need_to_provide("name")
+    should_see_that_i_will_need_to_provide("date of birth")
+    should_see_that_i_will_need_to_provide("the dates of your proposed visit")
+    should_see_that_i_will_need_to_provide("passport number")
+    should_see_that_i_will_need_to_provide("email")
+    should_see_that_i_will_need_to_provide("pilot's licence number")
+    should_see_that_i_will_need_to_provide("vehicle registration number")
+
+    should_see_explanation_of_non_working_days
   end
 
   # sub-helpers
@@ -57,5 +70,15 @@ RSpec.feature "Step 0: Start page - Pilot understands service before engaging" d
     ].each do |landable_body|
       expect(page).to have_content(landable_body)
     end
+  end
+
+  def should_see_that_i_will_need_to_provide(item)
+    within ".requirements" do
+      expect(page).to have_content(item)
+    end
+  end
+
+  def should_see_explanation_of_non_working_days
+    expect(page).to have_content("not all dates are available on all destinations")
   end
 end
