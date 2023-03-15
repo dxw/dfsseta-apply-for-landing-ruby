@@ -350,7 +350,7 @@ DEPENDENCIES
   brakeman
   bullet
   byebug
-  capybara (>= 2.15)
+  capybara
   climate_control
   coffee-rails (~> 5.0)
   cssbundling-rails
