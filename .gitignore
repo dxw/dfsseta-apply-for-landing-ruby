@@ -90,3 +90,9 @@ tmp/
 !/app/assets/builds/.keep
 
 /node_modules
+
+## Developer OS artefacts
+.DS_Store
+
+## Personal developer config
+.pryrc

@@ -92,3 +92,9 @@
 /.github/
 ### git stuff
 /.git/
+
+## Developer OS artefacts
+.DS_Store
+
+## Personal developer config
+.pryrc

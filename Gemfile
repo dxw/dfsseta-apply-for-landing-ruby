@@ -28,8 +28,6 @@ group :development do
   gem "better_errors"
   gem "listen", ">= 3.0.5", "< 3.8"
   gem "rails_layout"
-  gem "spring"
-  gem "spring-commands-rspec"
   gem "web-console", ">= 3.3.0"
 end
 
@@ -45,7 +43,7 @@ group :development, :test do
 end
 
 group :test do
-  gem "capybara", ">= 2.15"
+  gem "capybara"
   gem "database_cleaner"
   gem "launchy"
   gem "selenium-webdriver"
