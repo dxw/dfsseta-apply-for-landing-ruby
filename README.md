@@ -29,3 +29,12 @@ Data validation is performed at each step, preventing the user from continuing u
 ## Terminology
 
 See [ADR 0012: Standard terminology for the Apply for Landing service](./doc/architecture/decisions/0012-standard-terminology.md-standard-terminology.md) for details of how we refer to the entities within this domain.
+
+## Local development
+
+For bundling JS and CSS you will need:
+
+- `node` LTS (18.12.0)
+- `yarn` used for managing JS packages rather than npm
+
+The local development application is then run using `bin/dev` which asks `foreman` to run the app's `Procfile`.

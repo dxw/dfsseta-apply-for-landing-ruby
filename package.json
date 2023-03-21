@@ -7,9 +7,18 @@
     "lint:format": "prettier --check '**/*'",
     "lint:format:fix": "prettier --write '**/*'",
     "lint:js": "eslint .",
-    "lint:js:fix": "yarn run lint:js --fix"
+    "lint:js:fix": "yarn run lint:js --fix",
+    "build": "rollup -c --bundleConfigAsCjs rollup.config.js",
+    "build:css": "sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules --quiet-deps"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@rollup/plugin-commonjs": "^24.0.1",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-terser": "^0.4.0",
+    "govuk-frontend": "^4.5.0",
+    "rollup": "^3.19.1",
+    "sass": "^1.59.2"
+  },
   "devDependencies": {
     "eslint": "^8.18.0",
     "eslint-config-prettier": "^8.5.0",
