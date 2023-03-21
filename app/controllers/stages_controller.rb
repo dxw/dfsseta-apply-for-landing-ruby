@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class StepsController < ApplicationController
+class StagesController < ApplicationController
   def show
   end
 end

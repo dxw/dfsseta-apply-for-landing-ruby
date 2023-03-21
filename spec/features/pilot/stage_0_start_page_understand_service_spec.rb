@@ -1,23 +1,23 @@
 # frozen_string_literal: true
 
-# Feature: Step 0: Start page - Pilot understands service before engaging
+# Feature: Stage 0: Start page - Pilot understands service before engaging
 #   So that I understand what the service offers and requires
 #   As a pilot planning a visit to a planet
 #   I want to see guidance at the outset
 
-RSpec.feature "Step 0: Start page - Pilot understands service before engaging" do
+RSpec.feature "Stage 0: Start page - Pilot understands service before engaging" do
   # Scenario: Pilot understands service before engaging
   #   When I go to the service's start page
   #   Then I should see what the service can provide
   #   And I should see what information I will need to provide
   #   When I choose to use the service
-  #   Then I should find myself on the first step of the service
-  scenario "Step 0: Start page - pilot reviews information about service" do
+  #   Then I should find myself on the first stage of the service
+  scenario "Stage 0: Start page - pilot reviews information about service" do
     visit "/"
     should_see_what_the_service_can_provide
     should_see_what_information_i_will_need_to_provide
     when_i_choose_to_use_the_service
-    then_i_should_find_myself_on_the_first_step_of_the_service
+    then_i_should_find_myself_on_the_first_stage_of_the_service
   end
 
   # helpers
@@ -45,8 +45,8 @@ RSpec.feature "Step 0: Start page - Pilot understands service before engaging" d
     click_link("Start now")
   end
 
-  def then_i_should_find_myself_on_the_first_step_of_the_service
-    should_see_destination_question_step
+  def then_i_should_find_myself_on_the_first_stage_of_the_service
+    should_see_destination_question_stage
   end
 
   # sub-helpers
@@ -92,7 +92,7 @@ RSpec.feature "Step 0: Start page - Pilot understands service before engaging" d
     expect(page).to have_content("not all dates are available on all destinations")
   end
 
-  def should_see_destination_question_step
+  def should_see_destination_question_stage
     expect(page).to have_content("destination")
     expect(page).to have_content("Tell us which landable body you are planning to visit")
   end
