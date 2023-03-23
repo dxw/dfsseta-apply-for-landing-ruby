@@ -14,12 +14,11 @@
               You can use this service to obtain a landing permit for:
             </p>
             <ul class="govuk-list govuk-list--bullet">
-              <li>Mars</li>
-              <li>Saturn (core)</li>
-              <li>International Space Station (ESA)</li>
-              <li>Tiangong space station</li>
-              <li>Earth's moon</li>
-              <li>Pluto</li>
+              <% @landable_bodies.each do |body| -%>
+                <li>
+                  <%= body.name %>
+                </li>
+              <% end -%>
             </ul>
           </article>
         </row>
