@@ -23,6 +23,7 @@ gem "turbolinks", "~> 5"
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 gem "jsbundling-rails"
 gem "cssbundling-rails"
+gem "govuk_design_system_formbuilder"
 gem "uglifier", ">= 1.3.0"
 
 group :development do
