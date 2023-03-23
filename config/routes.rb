@@ -4,7 +4,16 @@ Rails.application.routes.draw do
   get "health_check" => "application#health_check"
   root to: "pilots#start"
 
-  resources :stages, only: :show
+  namespace :stages do
+    get :destination, to: "destination_stage#show"
+    put :destination, to: "destination_stage#update"
+
+    get :dates, to: "dates_stage#show"
+    put :dates, to: "dates_stage#update"
+
+    get :registration_number, to: "registration_number_stage#show"
+    put :registration_number, to: "registration_number_stage#update"
+  end
 
   # If the CANONICAL_HOSTNAME env var is present, and the request doesn't come from that
   # hostname, redirect us to the canonical hostname with the path and query string present

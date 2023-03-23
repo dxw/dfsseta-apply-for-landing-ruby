@@ -6,6 +6,11 @@
         <p class="govuk-body-l">
           Tell us which landable body you are planning to visit
         </p>
+
+        <%= form_for :destination, method: :put, url: stages_destination_path do |f| -%>
+          <%= f.govuk_submit "Save and continue"%>
+        <% end -%>
+
       </article>
     </row>
   </section>
