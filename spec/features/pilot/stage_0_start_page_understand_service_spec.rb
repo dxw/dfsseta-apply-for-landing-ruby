@@ -94,6 +94,6 @@ RSpec.feature "Stage 0: Start page - Pilot understands service before engaging" 
 
   def should_see_destination_question_stage
     expect(page).to have_content("destination")
-    expect(page).to have_content("Tell us which landable body you are planning to visit")
+    expect(page).to have_content("Which landable body are you planning to visit?")
   end
 end
