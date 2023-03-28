@@ -11,8 +11,8 @@ Rails.application.routes.draw do
     get :dates, to: "dates_stage#show"
     put :dates, to: "dates_stage#update"
 
-    get :registration_number, to: "registration_number_stage#show"
-    put :registration_number, to: "registration_number_stage#update"
+    get :"registration-number", to: "registration_number_stage#show"
+    put :"registration-number", to: "registration_number_stage#update"
   end
 
   # If the CANONICAL_HOSTNAME env var is present, and the request doesn't come from that
