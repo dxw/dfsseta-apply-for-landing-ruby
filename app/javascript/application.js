@@ -4,4 +4,3 @@ import * as GOVUKFrontend from "govuk-frontend";
 document.addEventListener("DOMContentLoaded", () => {
   GOVUKFrontend.initAll();
 });
-
