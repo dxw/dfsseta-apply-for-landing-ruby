@@ -25,5 +25,6 @@
 *.txt
 *.gz
 /public/assets/*
+/app/assets/builds/
 /coverage
 /.idea/
