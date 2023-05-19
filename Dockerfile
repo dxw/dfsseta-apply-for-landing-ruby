@@ -49,6 +49,7 @@ RUN bundle install --retry=10 --jobs=4
 # Install Javascript dependencies
 COPY yarn.lock ${DEPS_HOME}/yarn.lock
 COPY package.json ${DEPS_HOME}/package.json
+COPY rollup.config.js ${DEPS_HOME}/rollup.config.js
 
 RUN \
   if [ ${RAILS_ENV} = "production" ]; then \
@@ -73,6 +74,7 @@ COPY --from=dependencies ${GEM_HOME} ${GEM_HOME}
 COPY --from=dependencies ${DEPS_HOME}/package.json ${APP_HOME}/package.json
 COPY --from=dependencies ${DEPS_HOME}/yarn.lock ${APP_HOME}/yarn.lock
 COPY --from=dependencies ${DEPS_HOME}/node_modules ${APP_HOME}/node_modules
+COPY --from=dependencies ${DEPS_HOME}/rollup.config.js ${APP_HOME}/rollup.config.js
 # End
 
 # Copy app code (sorted by vague frequency of change for caching)
