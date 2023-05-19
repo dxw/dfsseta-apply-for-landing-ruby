@@ -13,4 +13,4 @@ cd "$(dirname "$0")/../.."
 docker-compose up --detach
 
 # TODO: Repace 'dfsseta-apply-for-landing' with application name
-docker attach dfsseta-apply-for-landing_web_1
+docker attach dfsseta-apply-for-landing-ruby_web_1
