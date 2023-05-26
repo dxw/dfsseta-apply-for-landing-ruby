@@ -3,5 +3,6 @@
   "env": {
     "browser": true,
     "es6": true
-  }
+  },
+  "ignorePatterns": ["rollup.config.js"]
 }
