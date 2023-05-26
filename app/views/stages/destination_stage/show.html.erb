@@ -1,0 +1,26 @@
+<main class="govuk-main-wrapper">
+  <section class="container">
+    <div class="row">
+      <article class="col">
+        <h1 class="govuk-heading-xl">Your destination</h1>
+
+        <%= form_for @destination, method: :put, url: stages_destination_path do |f| -%>
+
+          <%= f.govuk_error_summary %>
+
+          <%= f.govuk_collection_radio_buttons :destination_id,
+            @landable_bodies,
+            :id,
+            :name,
+            legend: { text: "Which landable body are you planning to visit?" },
+            hint: { text: "This service is not able to issue permits to destinations not listed here" },
+            classes: ["destinations"]
+          %>
+
+          <%= f.govuk_submit "Save and continue"%>
+        <% end -%>
+
+      </article>
+    </row>
+  </section>
+</main>
