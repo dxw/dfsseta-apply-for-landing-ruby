@@ -14,7 +14,9 @@ RUN \
   apt-get update && \
   apt-get install -y --fix-missing --no-install-recommends \
   build-essential \
-  libpq-dev
+  libpq-dev \
+  nodejs \
+  yarn
 
 ENV APP_HOME /srv/app
 ENV DEPS_HOME /deps
@@ -49,6 +51,7 @@ RUN bundle install --retry=10 --jobs=4
 # Install Javascript dependencies
 COPY yarn.lock ${DEPS_HOME}/yarn.lock
 COPY package.json ${DEPS_HOME}/package.json
+COPY rollup.config.js ${DEPS_HOME}/rollup.config.js
 
 RUN \
   if [ ${RAILS_ENV} = "production" ]; then \
@@ -66,12 +69,7 @@ FROM base AS web
 WORKDIR ${APP_HOME}
 
 # Copy dependencies (relying on dependencies using the same base image as this)
-COPY --from=dependencies ${DEPS_HOME}/Gemfile ${APP_HOME}/Gemfile
-COPY --from=dependencies ${DEPS_HOME}/Gemfile.lock ${APP_HOME}/Gemfile.lock
 COPY --from=dependencies ${GEM_HOME} ${GEM_HOME}
-
-COPY --from=dependencies ${DEPS_HOME}/package.json ${APP_HOME}/package.json
-COPY --from=dependencies ${DEPS_HOME}/yarn.lock ${APP_HOME}/yarn.lock
 COPY --from=dependencies ${DEPS_HOME}/node_modules ${APP_HOME}/node_modules
 # End
 
@@ -79,6 +77,11 @@ COPY --from=dependencies ${DEPS_HOME}/node_modules ${APP_HOME}/node_modules
 RUN mkdir -p ${APP_HOME}/log
 RUN mkdir -p ${APP_HOME}/tmp
 
+COPY Gemfile ${APP_HOME}/Gemfile
+COPY Gemfile.lock ${APP_HOME}/Gemfile.lock
+COPY package.json ${APP_HOME}/package.json
+COPY yarn.lock ${APP_HOME}/yarn.lock
+COPY rollup.config.js ${APP_HOME}/rollup.config.js
 COPY config.ru ${APP_HOME}/config.ru
 COPY Rakefile ${APP_HOME}/Rakefile
 COPY script ${APP_HOME}/script
@@ -117,7 +120,7 @@ ENTRYPOINT ["/docker-entrypoint.sh"]
 
 EXPOSE 3000
 
-CMD ["bundle", "exec", "rails", "server"]
+CMD bin/rails server -p 3000 -b '0.0.0.0'
 
 # ------------------------------------------------------------------------------
 # Test
