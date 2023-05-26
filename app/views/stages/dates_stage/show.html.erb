@@ -3,7 +3,25 @@
     <div class="row">
       <article class="col">
         <h1 class="govuk-heading-xl">Your dates</h1>
+        <%= form_for @dates, method: :put, url: stages_dates_path do |f| -%>
 
+          <%= f.govuk_error_summary %>
+
+          <%= f.govuk_date_field :landing_date,
+            legend: { text: 'Enter your requested landing date' },
+            hint: { text: 'For example, 31 3 2024' },
+            classes: ["landing"]
+          %>
+
+          <%= f.govuk_date_field :departure_date,
+            legend: { text: 'Enter your requested departure date' },
+            hint: { text: 'For example, 15 4 2024' },
+            classes: ["departure"]
+          %>
+
+
+          <%= f.govuk_submit "Save and continue"%>
+        <% end -%>
       </article>
     </row>
   </section>
