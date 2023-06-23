@@ -4,7 +4,7 @@
 FROM ruby:3.2.2 as base
 LABEL org.opencontainers.image.authors="contact@dxw.com"
 
-RUN curl -L https://deb.nodesource.com/setup_16.x | bash -
+RUN curl -L https://deb.nodesource.com/setup_18.x | bash -
 RUN curl https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN \
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | \
