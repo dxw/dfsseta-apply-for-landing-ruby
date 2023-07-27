@@ -4,5 +4,5 @@
     "browser": true,
     "es6": true
   },
-  "ignorePatterns": ["rollup.config.js"]
+  "ignorePatterns": ["rollup.config.js", "app/assets/builds/application.js"]
 }
