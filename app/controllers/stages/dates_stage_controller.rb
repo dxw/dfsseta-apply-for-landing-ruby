@@ -2,7 +2,10 @@
 
 class Stages::DatesStageController < ApplicationController
   def show
-    @dates = DatesForm.new(landing_date: landing_date, departure_date: departure_date)
+    @dates = DatesForm.new(
+      landing_date: saved_date("landing_date"),
+      departure_date: saved_date("departure_date")
+    )
   end
 
   def update
@@ -11,6 +14,12 @@ class Stages::DatesStageController < ApplicationController
       departure_date: departure_date
     )
     if @dates.valid?
+      answers.save(
+        stage_name: :dates, answer: {
+          landing_date: @dates.landing_date,
+          departure_date: @dates.departure_date
+        }
+      )
       redirect_to(stages_registration_number_path)
     else
       render :show
@@ -37,5 +46,15 @@ class Stages::DatesStageController < ApplicationController
     )
   rescue TypeError, Date::Error
     nil
+  end
+
+  def saved_date(date_name)
+    Date.parse(answers.find(:dates)&.dig(date_name))
+  rescue TypeError, Date::Error
+    nil
+  end
+
+  def answers
+    @answers ||= AnswersRepository.new(session)
   end
 end

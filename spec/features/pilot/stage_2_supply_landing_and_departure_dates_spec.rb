@@ -17,7 +17,7 @@ RSpec.feature "Stage 2: Supply dates" do
   #   And I proceed to the next stage
   #   Then I should find myself at the 'registration number' stage
 
-  scenario "Stage 2: Supply dates" do
+  scenario "Stage 2: Must supply dates" do
     given_i_am_at_the_provide_dates_stage
     when_i_fail_to_provide_dates
     and_i_proceed_to_the_next_stage
@@ -26,6 +26,19 @@ RSpec.feature "Stage 2: Supply dates" do
     when_i_provide_landing_and_departure_dates
     and_i_proceed_to_the_next_stage
     then_i_should_find_myself_at_the_registration_number_stage
+  end
+
+  # Scenario: May change dates
+  #   Given I have chosen landing and departure dates
+  #   And I proceed to the next stage
+  #   And I have returned to the 'provide dates' stage
+  #   Then I should see my saved answer from earlier
+
+  scenario "Stage 2: May change dates" do
+    given_i_have_chosen_landing_and_departure_dates
+    and_i_proceed_to_the_next_stage
+    and_i_have_returned_to_the_provide_dates_stage
+    then_i_should_see_my_saved_answer_from_earlier
   end
 
   # helpers
@@ -64,5 +77,28 @@ RSpec.feature "Stage 2: Supply dates" do
   def then_i_should_find_myself_at_the_registration_number_stage
     expect(current_path).to eq("/stages/registration-number")
     expect(page).to have_content("Your registration number")
+  end
+
+  def given_i_have_chosen_landing_and_departure_dates
+    given_i_am_at_the_provide_dates_stage
+    when_i_provide_landing_and_departure_dates
+  end
+
+  def and_i_have_returned_to_the_provide_dates_stage
+    given_i_am_at_the_provide_dates_stage
+  end
+
+  def then_i_should_see_my_saved_answer_from_earlier
+    within ".landing" do
+      expect(page).to have_field("Day", with: "10")
+      expect(page).to have_field("Month", with: "8")
+      expect(page).to have_field("Year", with: Date.today.year + 1)
+    end
+
+    within ".departure" do
+      expect(page).to have_field("Day", with: "18")
+      expect(page).to have_field("Month", with: "8")
+      expect(page).to have_field("Year", with: Date.today.year + 1)
+    end
   end
 end
