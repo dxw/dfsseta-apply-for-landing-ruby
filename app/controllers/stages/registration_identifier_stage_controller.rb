@@ -2,7 +2,9 @@
 
 class Stages::RegistrationIdentifierStageController < ApplicationController
   def show
-    @registration_identifier = SpacecraftRegistrationIdentifierForm.new(registration_id: nil)
+    @registration_identifier = SpacecraftRegistrationIdentifierForm.new(
+      registration_id: answers.find(:registration_identifier)&.dig("registration_id")
+    )
   end
 
   def update

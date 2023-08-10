@@ -27,6 +27,19 @@ RSpec.feature "Stage 3: Supply registration identifier" do
     then_i_should_find_myself_at_the_personal_details_stage
   end
 
+  # Scenario: May change registration identifier
+  #   Given I have supplied my registration identifier
+  #   And I proceed to the next stage
+  #   And I have returned to the 'registration identifier' stage
+  #   Then I should see my saved answer from earlier
+
+  scenario "Stage 3: may change registration identifier" do
+    given_i_have_supplied_my_registration_identifier
+    and_i_proceed_to_the_next_stage
+    and_i_have_returned_to_the_registration_identifier_stage
+    then_i_should_see_my_saved_answer_from_earlier
+  end
+
   def given_i_am_on_the_registration_identifier_stage
     visit("stages/registration-identifier")
   end
@@ -50,5 +63,18 @@ RSpec.feature "Stage 3: Supply registration identifier" do
   def then_i_should_find_myself_at_the_personal_details_stage
     expect(current_path).to eq("/stages/personal-details")
     expect(page).to have_content("Your personal details")
+  end
+
+  def given_i_have_supplied_my_registration_identifier
+    given_i_am_on_the_registration_identifier_stage
+    when_i_provide_spacecraft_registration_identifier
+  end
+
+  def and_i_have_returned_to_the_registration_identifier_stage
+    given_i_am_on_the_registration_identifier_stage
+  end
+
+  def then_i_should_see_my_saved_answer_from_earlier
+    expect(page).to have_field("Registration ID", with: "ABC123X")
   end
 end
