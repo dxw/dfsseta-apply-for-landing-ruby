@@ -76,7 +76,7 @@ RSpec.feature "Stage 2: Supply dates" do
 
   def then_i_should_find_myself_at_the_registration_identifier_stage
     expect(current_path).to eq("/stages/registration-identifier")
-    expect(page).to have_content("Your registration identifier")
+    expect(page).to have_content("Your registration ID")
   end
 
   def given_i_have_chosen_landing_and_departure_dates

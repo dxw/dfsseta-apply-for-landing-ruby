@@ -2,7 +2,18 @@
   <section class="container">
     <div class="row">
       <article class="col">
-        <h1 class="govuk-heading-xl">Your registration identifier</h1>
+        <h1 class="govuk-heading-xl">Your registration ID</h1>
+
+        <p class="govuk-body">We need to record your Spacecraft Registration Identifier.</p>
+
+        <%= form_for @registration_identifier, method: :put, url: stages_registration_identifier_path do |f| -%>
+
+          <%= f.govuk_error_summary %>
+
+          <%= f.govuk_text_field :registration_id, label: {text: 'Registration ID'}, width: 'one-half' %>
+
+          <%= f.govuk_submit "Save and continue"%>
+        <% end -%>
       </article>
     </row>
   </section>

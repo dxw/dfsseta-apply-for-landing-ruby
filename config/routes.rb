@@ -13,6 +13,9 @@ Rails.application.routes.draw do
 
     get :"registration-identifier", to: "registration_identifier_stage#show"
     put :"registration-identifier", to: "registration_identifier_stage#update"
+
+    get :"personal-details", to: "personal_details_stage#show"
+    put :"personal-details", to: "personal_details_stage#update"
   end
 
   # If the CANONICAL_HOSTNAME env var is present, and the request doesn't come from that
