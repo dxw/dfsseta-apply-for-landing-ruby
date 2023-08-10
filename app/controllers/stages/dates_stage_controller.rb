@@ -20,7 +20,7 @@ class Stages::DatesStageController < ApplicationController
           departure_date: @dates.departure_date
         }
       )
-      redirect_to(stages_registration_number_path)
+      redirect_to(stages_registration_identifier_path)
     else
       render :show
     end
