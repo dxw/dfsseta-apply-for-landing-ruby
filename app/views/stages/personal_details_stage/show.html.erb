@@ -3,6 +3,20 @@
     <div class="row">
       <article class="col">
         <h1 class="govuk-heading-xl">Your personal details</h1>
+        <p class="govuk-body">We need to record some details about you.</p>
+
+        <%= form_for @personal_details, method: :put, url: stages_personal_details_path do |f| -%>
+
+          <%= f.govuk_error_summary %>
+
+          <%= f.govuk_text_field :fullname, label: {text: 'Full name'}, width: 'one-half' %>
+
+          <%= f.govuk_text_field :email, label: {text: 'Email address'}, width: 'one-half' %>
+
+          <%= f.govuk_text_field :licence_id, label: {text: 'Licence ID'}, width: 'one-half' %>
+
+          <%= f.govuk_submit "Save and continue"%>
+        <% end -%>
       </article>
     </row>
   </section>

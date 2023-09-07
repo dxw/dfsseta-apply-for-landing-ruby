@@ -16,6 +16,9 @@ Rails.application.routes.draw do
 
     get :"personal-details", to: "personal_details_stage#show"
     put :"personal-details", to: "personal_details_stage#update"
+
+    get :"check-your-answers", to: "check_your_answers_stage#show"
+    put :"check-your-answers", to: "check_your_answers_stage#update"
   end
 
   # If the CANONICAL_HOSTNAME env var is present, and the request doesn't come from that
