@@ -6,16 +6,6 @@
 #   I want to supply the requested personal details
 
 RSpec.feature "Stage 4: Supply personal details" do
-  # Scenario: Must supply personal details
-  #   Given I am on the 'personal details' stage
-  #   When I fail to provide the requested personal details
-  #   And I proceed to the next stage
-  #   Then I should see that personal details must be provided
-  #
-  #   When I provide personal details
-  #   And I proceed to the next stage
-  #   Then I should find myself at the 'check your answers' stage
-
   scenario "Stage 3: must supply personal details" do
     given_i_am_on_the_personal_details_stage
     when_i_fail_to_provide_the_requested_personal_details
@@ -26,12 +16,6 @@ RSpec.feature "Stage 4: Supply personal details" do
     and_i_proceed_to_the_next_stage
     then_i_should_find_myself_at_the_check_your_answers_stage
   end
-
-  # Scenario: May change personal details
-  #   Given I have supplied my personal details
-  #   And I proceed to the next stage
-  #   And I have returned to the 'personal details' stage
-  #   Then I should see my saved answers from earlier
 
   scenario "Stage 3: may change personal details" do
     given_i_have_supplied_my_personal_details
