@@ -37,7 +37,7 @@ RSpec.feature "Stage 3: Supply registration identifier" do
   end
 
   def then_i_should_see_that_the_spacecraft_registration_identifier_must_be_provided
-    expect(page).to have_content("You must provide a Spacecraft Registration Identifier")
+    expect(page).to have_content("Enter a Spacecraft Registration Identifier")
   end
 
   def when_i_provide_spacecraft_registration_identifier

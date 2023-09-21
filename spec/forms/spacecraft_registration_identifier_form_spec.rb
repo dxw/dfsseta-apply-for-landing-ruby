@@ -8,7 +8,7 @@ RSpec.describe SpacecraftRegistrationIdentifierForm do
 
         aggregate_failures do
           expect(form.errors).to include(:registration_id)
-          expect(form.errors.full_messages.join).to match("You must provide a Spacecraft Registration Identifier")
+          expect(form.errors.full_messages.join).to match("Enter a Spacecraft Registration Identifier")
         end
       end
     end
@@ -43,7 +43,7 @@ RSpec.describe SpacecraftRegistrationIdentifierForm do
 
         aggregate_failures do
           expect(form.errors).to include(:registration_id)
-          expect(form.errors.full_messages.join).to match("You must provide a Spacecraft Registration Identifier in the form ABC123A")
+          expect(form.errors.full_messages.join).to match("Enter a Spacecraft Registration Identifier in the form ABC123A")
         end
       end
     end
