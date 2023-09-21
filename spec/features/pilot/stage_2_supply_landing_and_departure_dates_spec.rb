@@ -15,7 +15,7 @@ RSpec.feature "Stage 2: Supply dates" do
   #
   #   When I provide landing and departure dates
   #   And I proceed to the next stage
-  #   Then I should find myself at the 'registration number' stage
+  #   Then I should find myself at the 'registration identifier' stage
 
   scenario "Stage 2: Must supply dates" do
     given_i_am_at_the_provide_dates_stage
@@ -25,7 +25,7 @@ RSpec.feature "Stage 2: Supply dates" do
 
     when_i_provide_landing_and_departure_dates
     and_i_proceed_to_the_next_stage
-    then_i_should_find_myself_at_the_registration_number_stage
+    then_i_should_find_myself_at_the_registration_identifier_stage
   end
 
   # Scenario: May change dates
@@ -74,9 +74,9 @@ RSpec.feature "Stage 2: Supply dates" do
     end
   end
 
-  def then_i_should_find_myself_at_the_registration_number_stage
-    expect(current_path).to eq("/stages/registration-number")
-    expect(page).to have_content("Your registration number")
+  def then_i_should_find_myself_at_the_registration_identifier_stage
+    expect(current_path).to eq("/stages/registration-identifier")
+    expect(page).to have_content("Your registration ID")
   end
 
   def given_i_have_chosen_landing_and_departure_dates
