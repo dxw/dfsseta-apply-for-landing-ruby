@@ -56,8 +56,8 @@ RSpec.feature "Stage 2: Supply dates" do
   end
 
   def then_i_should_see_that_dates_must_be_provided
-    expect(page).to have_content("You must provide a landing date")
-    expect(page).to have_content("You must provide a departure date")
+    expect(page).to have_content("Enter a landing date")
+    expect(page).to have_content("Enter a departure date")
   end
 
   def when_i_provide_landing_and_departure_dates
