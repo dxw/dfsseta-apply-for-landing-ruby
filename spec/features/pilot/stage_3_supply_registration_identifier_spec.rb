@@ -6,16 +6,6 @@
 #   I want to supply a validated "Spacecraft Registration Identifier"
 
 RSpec.feature "Stage 3: Supply registration identifier" do
-  # Scenario: Must supply Spacecraft Registration Identifier
-  #   Given I am on the 'registration identifier' stage
-  #   When I fail to provide a valid identifier
-  #   And I proceed to the next stage
-  #   Then I should see that the Spacecraft Registration Identifier must be provided
-  #
-  #   When I provide Spacecraft Registration Identifier
-  #   And I proceed to the next stage
-  #   Then I should find myself at the 'personal details' stages
-
   scenario "Stage 3: must supply registration identifier" do
     given_i_am_on_the_registration_identifier_stage
     when_i_fail_to_provide_a_valid_identifier
@@ -26,12 +16,6 @@ RSpec.feature "Stage 3: Supply registration identifier" do
     and_i_proceed_to_the_next_stage
     then_i_should_find_myself_at_the_personal_details_stage
   end
-
-  # Scenario: May change registration identifier
-  #   Given I have supplied my registration identifier
-  #   And I proceed to the next stage
-  #   And I have returned to the 'registration identifier' stage
-  #   Then I should see my saved answer from earlier
 
   scenario "Stage 3: may change registration identifier" do
     given_i_have_supplied_my_registration_identifier
