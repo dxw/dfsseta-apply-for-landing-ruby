@@ -2,10 +2,11 @@
   <section class="container">
     <div class="row">
       <article class="col">
-        <h1 class="govuk-heading-xl">Your dates</h1>
         <%= form_for @dates, method: :put, url: stages_dates_path do |f| -%>
 
           <%= f.govuk_error_summary %>
+
+          <h1 class="govuk-heading-xl">Your dates</h1>
 
           <%= f.govuk_date_field :landing_date,
             legend: { text: 'Enter your requested landing date' },

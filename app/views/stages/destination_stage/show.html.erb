@@ -2,11 +2,11 @@
   <section class="container">
     <div class="row">
       <article class="col">
-        <h1 class="govuk-heading-xl">Your destination</h1>
-
         <%= form_for @destination, method: :put, url: stages_destination_path do |f| -%>
 
           <%= f.govuk_error_summary %>
+
+          <h1 class="govuk-heading-xl">Your destination</h1>
 
           <%= f.govuk_collection_radio_buttons :destination_id,
             @landable_bodies,
