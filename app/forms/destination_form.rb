@@ -7,5 +7,5 @@ class DestinationForm
     @destination_id = destination_id
   end
 
-  validates :destination_id, presence: {message: "You must choose a destination"}
+  validates :destination_id, presence: {message: "Choose a destination"}
 end
