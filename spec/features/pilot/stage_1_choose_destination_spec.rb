@@ -55,7 +55,7 @@ RSpec.feature "Stage 1: Must choose destination" do
   end
 
   def then_i_should_see_that_a_destination_must_be_chosen
-    expect(page).to have_content("You must choose a destination")
+    expect(page).to have_content("Choose a destination")
   end
 
   def when_choose_a_destination

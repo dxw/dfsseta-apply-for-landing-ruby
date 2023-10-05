@@ -8,8 +8,8 @@ class DatesForm
     @departure_date = departure_date
   end
 
-  validates :landing_date, presence: {message: "You must provide a landing date"}
-  validates :departure_date, presence: {message: "You must provide a departure date"}
+  validates :landing_date, presence: {message: "Enter a landing date"}
+  validates :departure_date, presence: {message: "Enter a departure date"}
 
   validates_comparison_of :landing_date, greater_than: Date.today, message: "Landing date must be in the future"
   validates_comparison_of :departure_date, greater_than: Date.today, message: "Departure date must be in the future"

@@ -8,7 +8,7 @@ RSpec.describe DestinationForm do
 
         aggregate_failures do
           expect(form.errors).to include(:destination_id)
-          expect(form.errors.full_messages.join).to match("You must choose a destination")
+          expect(form.errors.full_messages.join).to match("Choose a destination")
         end
       end
     end

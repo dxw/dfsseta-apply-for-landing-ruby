@@ -8,7 +8,7 @@ RSpec.describe DatesForm do
 
         aggregate_failures do
           expect(form.errors).to include(:landing_date)
-          expect(form.errors.full_messages.join).to match("You must provide a landing date")
+          expect(form.errors.full_messages.join).to match("Enter a landing date")
         end
       end
     end
@@ -33,7 +33,7 @@ RSpec.describe DatesForm do
 
         aggregate_failures do
           expect(form.errors).to include(:departure_date)
-          expect(form.errors.full_messages.join).to match("You must provide a departure date")
+          expect(form.errors.full_messages.join).to match("Enter a departure date")
         end
       end
     end
