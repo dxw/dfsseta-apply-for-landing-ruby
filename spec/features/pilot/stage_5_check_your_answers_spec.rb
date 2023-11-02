@@ -16,11 +16,11 @@ RSpec.feature "Stage 4: Check your answers" do
   end
 
   scenario "Change answers" do
-    # Given I have completed all the required stages
-    # And I am on the final 'Check your answers' stage
-    # When I choose to change an answer
-    # Then I see my saved answers
-    # And can advance through the stages back to 'Confirm your answers'
+    given_i_have_completed_all_the_required_stages
+    and_i_am_on_the_final_check_your_answers_stage
+    when_i_choose_to_change_an_answer
+    and_advance_through_the_stages_back_to_confirm_your_answers
+    then_i_see_my_edited_answer
   end
 
   def given_i_have_completed_all_the_required_stages
@@ -57,6 +57,26 @@ RSpec.feature "Stage 4: Check your answers" do
   def when_i_confirm_that_i_ve_reviewed_my_answers_and_wish_to_apply
     flunk("Not implemented")
     click_button("Confirm and apply")
+  end
+
+  def when_i_choose_to_change_an_answer
+    visit(stages_destination_path)
+    expect(page).to have_checked_field("Saturn (core)")
+
+    choose("Earth's moon")
+    click_button("Save and continue")
+  end
+
+  def and_advance_through_the_stages_back_to_confirm_your_answers
+    click_button("Save and continue")
+    click_button("Save and continue")
+    click_button("Save and continue")
+  end
+
+  def then_i_see_my_edited_answer
+    within ".stage[data-stage='destination']" do
+      expect(page).to have_content("Earth's moon")
+    end
   end
 
   # helpers
