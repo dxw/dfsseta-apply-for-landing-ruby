@@ -2,7 +2,7 @@
 
 class SubmissionsController < ApplicationController
   def create
-    @submission_reference = "AFL-123-ABC"
+    @submission_reference = SubmissionsReferenceGenerator.generate
     render "successful_submission"
   end
 end
