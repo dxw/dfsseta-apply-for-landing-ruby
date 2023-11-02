@@ -61,36 +61,33 @@ RSpec.feature "Stage 4: Check your answers" do
 
   # helpers
 
-  Stage = Struct.new(:name, :title, :link_path, :link_text, :questions, keyword_init: true)
-  Question = Struct.new(:ref, :title, :answer, keyword_init: true)
-
   def stages
     @stages = [
-      Stage.new(
+      CheckYourAnswers::Stage.new(
         name: "destination",
         title: "Destination",
         link_path: stages_destination_path,
         link_text: "destination",
         questions: [
-          Question.new(
+          CheckYourAnswers::Question.new(
             ref: :destination,
             title: "Destination",
             answer: "Saturn (core)"
           )
         ]
       ),
-      Stage.new(
+      CheckYourAnswers::Stage.new(
         name: "dates",
         title: "Dates",
         link_path: stages_dates_path,
         link_text: "dates",
         questions: [
-          Question.new(
+          CheckYourAnswers::Question.new(
             ref: :landing_date,
             title: "Requested landing date",
             answer: "10 August #{Date.today.year + 1}"
           ),
-          Question.new(
+          CheckYourAnswers::Question.new(
             ref: :departure_date,
             title: "Requested departure date",
             answer: "18 August #{Date.today.year + 1}"
