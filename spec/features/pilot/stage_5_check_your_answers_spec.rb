@@ -55,7 +55,6 @@ RSpec.feature "Stage 4: Check your answers" do
   end
 
   def when_i_confirm_that_i_ve_reviewed_my_answers_and_wish_to_apply
-    flunk("Not implemented")
     click_button("Confirm and apply")
   end
 
@@ -77,6 +76,16 @@ RSpec.feature "Stage 4: Check your answers" do
     within ".stage[data-stage='destination']" do
       expect(page).to have_content("Earth's moon")
     end
+  end
+
+  def then_i_receive_an_application_confirmation
+    within ".govuk-panel--confirmation" do
+      expect(page).to have_css(".govuk-panel__title", text: "Application submitted")
+      expect(page).to have_css(".govuk-panel__body", text: "Your reference number")
+      expect(page).to have_css(".govuk-panel__body", text: "AFL")
+    end
+
+    expect(page).to have_content("We aim to contact you with a decision within 3 working days")
   end
 
   # helpers
@@ -190,5 +199,4 @@ RSpec.feature "Stage 4: Check your answers" do
 
     click_button("Save and continue")
   end
-
 end

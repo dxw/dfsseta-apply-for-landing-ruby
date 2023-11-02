@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     put :"check-your-answers", to: "check_your_answers_stage#update"
   end
 
+  resource :submissions, only: :create
+
   # If the CANONICAL_HOSTNAME env var is present, and the request doesn't come from that
   # hostname, redirect us to the canonical hostname with the path and query string present
   if ENV["CANONICAL_HOSTNAME"].present?
