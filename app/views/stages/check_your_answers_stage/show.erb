@@ -6,64 +6,20 @@
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-two-thirds">
 
-            <div class="govuk-summary-card stage" data-stage="destination">
-              <div class="govuk-summary-card__title-wrapper">
-                <h2 class="govuk-summary-card__title">Destination</h2>
-                <ul class="govuk-summary-card__actions">
-                  <li class="govuk-summary-card__action">
-                    <a class="govuk-link" href="/stages/destination">
-                      Change<span class="govuk-visually-hidden"> destination</span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div class="govuk-summary-card__content">
-                <dl class="govuk-summary-list">
-                  <div class="govuk-summary-list__row question" data-question="destination" >
-                    <dt class="govuk-summary-list__key">
-                      Destination
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                      Saturn (core)
-                    </dd>
-                  </div>
-                </dl>
-              </div>
-            </div>
-
-            <div class="govuk-summary-card stage" data-stage="dates">
-              <div class="govuk-summary-card__title-wrapper">
-                <h2 class="govuk-summary-card__title">Dates</h2>
-                <ul class="govuk-summary-card__actions">
-                  <li class="govuk-summary-card__action">
-                    <a class="govuk-link" href="/stages/dates">
-                      Change<span class="govuk-visually-hidden"> dates</span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div class="govuk-summary-card__content">
-                <dl class="govuk-summary-list">
-                  <div class="govuk-summary-list__row question" data-question="landing_date">
-                    <dt class="govuk-summary-list__key">
-                      Requested landing date
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                      10 August 2024
-                    </dd>
-                  </div>
-
-                  <div class="govuk-summary-list__row question" data-question="departure_date">
-                    <dt class="govuk-summary-list__key">
-                      Requested departure date
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                      18 August 2024
-                    </dd>
-                  </div>
-                </dl>
-              </div>
-            </div>
+            <% @stages_questions_and_answers.each do |stage| %>
+               <%=
+                 render(
+                   partial: "summary_card",
+                   locals: {
+                     stage_name: stage.name,
+                     stage_title: stage.title,
+                     link_path: stage.link_path,
+                     link_text: stage.link_text,
+                     questions_and_answers: stage.questions
+                   }
+                 )
+               %>
+             <% end %>
 
             <h2 class="govuk-heading-m">Now send your landing application</h2>
             <p class="govuk-body">By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
