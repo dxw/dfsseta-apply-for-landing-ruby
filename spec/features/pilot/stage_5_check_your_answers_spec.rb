@@ -62,7 +62,7 @@ RSpec.feature "Stage 4: Check your answers" do
   # helpers
 
   def stages
-    @stages = [
+    @stages ||= [
       CheckYourAnswers::Stage.new(
         name: "destination",
         title: "Destination",
@@ -76,6 +76,7 @@ RSpec.feature "Stage 4: Check your answers" do
           )
         ]
       ),
+
       CheckYourAnswers::Stage.new(
         name: "dates",
         title: "Dates",
@@ -91,6 +92,44 @@ RSpec.feature "Stage 4: Check your answers" do
             ref: :departure_date,
             title: "Requested departure date",
             answer: "18 August #{Date.today.year + 1}"
+          )
+        ]
+      ),
+
+      CheckYourAnswers::Stage.new(
+        name: "registration_identifier",
+        title: "Spacecraft Registration Identifier",
+        link_path: stages_registration_identifier_path,
+        link_text: "Registration ID",
+        questions: [
+          CheckYourAnswers::Question.new(
+            ref: :registration_id,
+            title: "Registration ID",
+            answer: "ABC123X"
+          )
+        ]
+      ),
+
+      CheckYourAnswers::Stage.new(
+        name: "personal_detals",
+        title: "Personal details",
+        link_path: stages_personal_details_path,
+        link_text: "personal details",
+        questions: [
+          CheckYourAnswers::Question.new(
+            ref: :fullname,
+            title: "Name",
+            answer: "Roger Smith"
+          ),
+          CheckYourAnswers::Question.new(
+            ref: :email,
+            title: "Email address",
+            answer: "roger@example.com"
+          ),
+          CheckYourAnswers::Question.new(
+            ref: :licence_id,
+            title: "Licence ID",
+            answer: "12345678"
           )
         ]
       )
