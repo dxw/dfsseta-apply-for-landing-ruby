@@ -5,10 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.3.4"
 
 gem "bootsnap", ">= 1.1.0", require: false
-gem "bootstrap", ">= 4.3.1"
-gem "coffee-rails", "~> 5.0"
 gem "high_voltage"
-gem "jbuilder", "~> 2.11"
 gem "jquery-rails"
 gem "lograge", "~> 0.12"
 gem "pg"
@@ -21,7 +18,6 @@ gem "sprockets-rails"
 gem "turbolinks", "~> 5"
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 gem "jsbundling-rails"
-gem "cssbundling-rails"
 gem "govuk_design_system_formbuilder"
 
 group :development do
