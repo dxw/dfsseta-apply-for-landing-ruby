@@ -14,17 +14,15 @@ gem "lograge", "~> 0.12"
 gem "pg"
 gem "pry-rails"
 gem "pry-byebug"
-gem "mini_racer"
 gem "puma", "~> 6.0"
 gem "rollbar"
 gem "rails", "~> 7.0"
-gem "sass-rails", "~> 6.0"
+gem "sprockets-rails"
 gem "turbolinks", "~> 5"
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 gem "jsbundling-rails"
 gem "cssbundling-rails"
 gem "govuk_design_system_formbuilder"
-gem "uglifier", ">= 1.3.0"
 
 group :development do
   gem "better_errors"
