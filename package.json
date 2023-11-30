@@ -29,6 +29,7 @@
     "stylelint-config-standard-scss": "^5.0.0"
   },
   "engines": {
-    "node": "18.x"
+    "node": "18.x",
+    "npm": "8.x"
   }
 }
