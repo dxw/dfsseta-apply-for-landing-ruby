@@ -17,7 +17,7 @@ gem "pry-byebug"
 gem "mini_racer"
 gem "puma", "~> 6.0"
 gem "rollbar"
-gem "rails", "~> 7.0"
+gem "rails", "~> 7.2"
 gem "sass-rails", "~> 6.0"
 gem "turbolinks", "~> 5"
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
