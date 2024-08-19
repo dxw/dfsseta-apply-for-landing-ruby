@@ -14,7 +14,7 @@ RSpec.describe DatesForm do
     end
 
     context "when landing_date is present" do
-      let(:form) { DatesForm.new(landing_date: Date.new(2024, 8, 4), departure_date: Date.today) }
+      let(:form) { DatesForm.new(landing_date: Date.today + 1.week, departure_date: Date.today + 2.weeks) }
 
       it "should NOT flag an error" do
         form.valid?
@@ -39,7 +39,7 @@ RSpec.describe DatesForm do
     end
 
     context "when departure_date is present" do
-      let(:form) { DatesForm.new(landing_date: Date.today, departure_date: Date.new(2024, 8, 12)) }
+      let(:form) { DatesForm.new(landing_date: Date.today + 1.week, departure_date: Date.today + 2.weeks) }
 
       it "should NOT flag an error" do
         form.valid?
