@@ -117,4 +117,45 @@ RSpec.describe DatesForm do
       end
     end
   end
+
+  describe "ensure departure date is no more than 14 days after landing date" do
+    let(:landing_date) { Date.today + 1.day }
+
+    context "when departure date is less than 14 days after landing date" do
+      let(:departure_date) { landing_date + 5.day }
+
+      let(:form) { DatesForm.new(landing_date: landing_date, departure_date: departure_date) }
+
+      it "should NOT flag an error" do
+        form.valid?
+
+        expect(form.errors).to_not include(:departure_date)
+      end
+    end
+
+    context "when departure date is 14 days after landing date" do
+      let(:departure_date) { landing_date + 14.day }
+
+      let(:form) { DatesForm.new(landing_date: landing_date, departure_date: departure_date) }
+
+      it "should NOT flag an error" do
+        form.valid?
+
+        expect(form.errors).to_not include(:departure_date)
+      end
+    end
+
+    context "when departure date is more than 14 days after landing date" do
+      let(:departure_date) { landing_date + 15.day }
+
+      let(:form) { DatesForm.new(landing_date: landing_date, departure_date: departure_date) }
+
+      it "should flag an error" do
+        form.valid?
+
+        expect(form.errors).to include(:departure_date)
+        expect(form.errors.full_messages.join).to match("Departure date must be within 14 days of landing date")
+      end
+    end
+  end
 end
