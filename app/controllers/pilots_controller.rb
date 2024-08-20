@@ -2,6 +2,6 @@
 
 class PilotsController < ApplicationController
   def start
-    @landable_bodies = LANDABLE_BODIES
+    landable_bodies
   end
 end

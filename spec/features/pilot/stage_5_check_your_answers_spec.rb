@@ -6,6 +6,10 @@
 #   I want to review my answers and edit them if necessary
 
 RSpec.feature "Stage 4: Check your answers" do
+  before do
+    create_landable_bodies
+  end
+
   scenario "Confirm and apply" do
     given_i_have_completed_all_the_required_stages
     and_i_am_on_the_final_check_your_answers_stage
