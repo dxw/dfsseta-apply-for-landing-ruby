@@ -25,6 +25,7 @@ gem "jsbundling-rails"
 gem "cssbundling-rails"
 gem "govuk_design_system_formbuilder"
 gem "terser"
+gem "seed-fu"
 
 group :development do
   gem "better_errors"
