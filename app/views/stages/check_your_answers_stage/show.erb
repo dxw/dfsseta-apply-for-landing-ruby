@@ -3,6 +3,35 @@
     <div class="row">
       <article class="col">
         <h1 class="govuk-heading-xl">Check your answers</h1>
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+
+            <% @stages_questions_and_answers.each do |stage| %>
+               <%=
+                 render(
+                   partial: "summary_card",
+                   locals: {
+                     stage_name: stage.name,
+                     stage_title: stage.title,
+                     link_path: stage.link_path,
+                     link_text: stage.link_text,
+                     questions_and_answers: stage.questions
+                   }
+                 )
+               %>
+             <% end %>
+
+            <h2 class="govuk-heading-m">Now send your landing application</h2>
+            <p class="govuk-body">By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+
+            <%= form_tag(submissions_path) do -%>
+              <button class="govuk-button" data-module="govuk-button">
+                Confirm and apply
+              </button>
+            <% end -%>
+
+          </div>
+        </div>
       </article>
     </row>
   </section>
