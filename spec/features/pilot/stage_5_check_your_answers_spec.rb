@@ -5,7 +5,7 @@
 #   As a pilot applying to make a landing
 #   I want to review my answers and edit them if necessary
 
-RSpec.feature "Stage 4: Check your answers" do
+RSpec.feature "Stage 5: Check your answers" do
   before do
     create_landable_bodies
   end
