@@ -1,6 +1,12 @@
 class SubmissionsProcessor
-  def initialize(reference:, session:, repository_class: LandingApplication)
+  def initialize(
+    reference:,
+    session:,
+    repository_class: LandingApplication,
+    destination_finder: LandableBody
+  )
     @repository_class = repository_class
+    @destination_finder = destination_finder
     @reference = reference
     @session = session
   end
@@ -20,7 +26,11 @@ class SubmissionsProcessor
   private
 
   def destination
-    {destination: LandableBody.find(@session.dig("destination", "destination_id"))}
+    {
+      destination: @destination_finder.find(
+        @session.dig("destination", "destination_id")
+      )
+    }
   end
 
   def reference

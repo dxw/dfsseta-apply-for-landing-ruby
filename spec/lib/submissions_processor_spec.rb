@@ -10,6 +10,8 @@ RSpec.describe SubmissionsProcessor do
   end
 
   describe "#call" do
+    let(:destination_finder) { class_double(LandableBody) }
+
     let(:repository_class) { class_double(LandingApplication) }
     let(:reference) { "AFL-123-ABC" }
 
@@ -35,6 +37,20 @@ RSpec.describe SubmissionsProcessor do
           "licence_id" => "1233ABC00123"
         }
       }
+    end
+
+    it "retrieves the destination from LandingBody" do
+      allow(repository_class).to receive(:create).and_return(double)
+      allow(destination_finder).to receive(:find).and_return(double)
+
+      SubmissionsProcessor.new(
+        session: session,
+        reference: reference,
+        repository_class: repository_class,
+        destination_finder: destination_finder
+      ).call
+
+      expect(destination_finder).to have_received(:find).with(destination.id)
     end
 
     it "creates a LandingApplication with the reference and data from session" do
