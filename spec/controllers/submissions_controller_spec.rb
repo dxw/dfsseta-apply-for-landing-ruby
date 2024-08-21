@@ -3,6 +3,11 @@ require "rails_helper"
 RSpec.describe SubmissionsController do
   describe "POST to :create" do
     it "asks the submissions reference generator for a reference" do
+      processor = instance_double(SubmissionsProcessor)
+      allow(SubmissionsProcessor).to receive(:new).and_return(processor)
+
+      allow(processor).to receive(:call).and_return(double)
+
       allow(SubmissionsReferenceGenerator).to receive(:generate).and_return(double)
 
       post :create
