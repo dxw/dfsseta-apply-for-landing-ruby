@@ -89,7 +89,7 @@ RSpec.describe DatesForm do
 
   describe "ensure that both landing and departure dates are in the future" do
     let(:tomorrow) { Date.today + 1.day }
-    let(:yesterday) { Date.today(-1.day) }
+    let(:yesterday) { Date.today - 1.day }
 
     context "when landing date is in the past" do
       let(:form) { DatesForm.new(landing_date: yesterday, departure_date: tomorrow) }
