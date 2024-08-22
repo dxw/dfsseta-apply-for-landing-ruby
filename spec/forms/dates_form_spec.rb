@@ -158,4 +158,21 @@ RSpec.describe DatesForm do
       end
     end
   end
+
+  describe "ensure landing and departure dates do not fall on bank holidays" do
+    context "when they fall on bank holidays" do
+      let(:landing_date) { Date.new(Date.today.year + 1, 12, 25) }
+      let(:departure_date) { Date.new(Date.today.year + 1, 12, 26) }
+
+      let(:form) { DatesForm.new(landing_date: landing_date, departure_date: departure_date) }
+
+      it "should flag an error" do
+        form.valid?
+
+        expect(form.errors).to include(:departure_date, :landing_date)
+        expect(form.errors.full_messages.join).to match("Landing date must not fall on a bank holiday")
+        expect(form.errors.full_messages.join).to match("Departure date must not fall on a bank holiday")
+      end
+    end
+  end
 end
