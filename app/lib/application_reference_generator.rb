@@ -1,4 +1,4 @@
-class SubmissionsReferenceGenerator
+class ApplicationReferenceGenerator
   def self.generate
     "AFL-#{random_numbers}-#{random_letters}"
   end

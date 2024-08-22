@@ -3,10 +3,10 @@
 class SubmissionsController < ApplicationController
   def create
     landing_application = SubmissionsProcessor
-      .new(reference: SubmissionsReferenceGenerator.generate, session: session)
+      .new(reference: ApplicationReferenceGenerator.generate, session: session)
       .call
 
-    @submission_reference = landing_application.application_reference
+    @application_reference = landing_application.application_reference
 
     render "successful_submission"
   end

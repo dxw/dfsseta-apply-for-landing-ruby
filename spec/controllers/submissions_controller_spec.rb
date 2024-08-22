@@ -10,16 +10,16 @@ RSpec.describe SubmissionsController do
 
       allow(processor).to receive(:call).and_return(landing_application)
 
-      allow(SubmissionsReferenceGenerator).to receive(:generate).and_return(double)
+      allow(ApplicationReferenceGenerator).to receive(:generate).and_return(double)
 
       post :create
 
-      expect(SubmissionsReferenceGenerator).to have_received(:generate)
+      expect(ApplicationReferenceGenerator).to have_received(:generate)
     end
 
     it "passes the reference and session to submissions processor" do
       reference = double("reference")
-      allow(SubmissionsReferenceGenerator).to receive(:generate).and_return(reference)
+      allow(ApplicationReferenceGenerator).to receive(:generate).and_return(reference)
 
       expect(SubmissionsProcessor).to receive(:new)
         .with(reference: reference, session: request.session)
