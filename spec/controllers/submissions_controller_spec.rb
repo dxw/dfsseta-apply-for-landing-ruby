@@ -31,5 +31,19 @@ RSpec.describe SubmissionsController do
 
       expect(processor).to have_received(:call)
     end
+
+    it "asks the AnswersRepository to clear the session to allow a fresh application" do
+      allow(SubmissionsProcessor).to receive(:new).and_return(processor)
+      allow(processor).to receive(:call).and_return(landing_application)
+      allow(ApplicationReferenceGenerator).to receive(:generate).and_return(double)
+
+      answers_repository = instance_double(AnswersRepository, clear_answers: double).tap do |ar|
+        allow(AnswersRepository).to receive(:new).and_return(ar)
+      end
+
+      post :create
+
+      expect(answers_repository).to have_received(:clear_answers)
+    end
   end
 end

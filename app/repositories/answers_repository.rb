@@ -10,4 +10,10 @@ class AnswersRepository
   def find(stage_name)
     @session.dig(stage_name)
   end
+
+  def clear_answers
+    @session.keys
+      .filter { |key| !%w[session_id _csrf_token].include?(key) }
+      .each { |key| @session.delete(key) }
+  end
 end
