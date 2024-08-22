@@ -16,6 +16,10 @@ RSpec.feature "Stage 1: Must choose destination" do
   #   And I proceed to the next stage
   #   Then I should find myself at the 'provide dates' stage
 
+  before do
+    create_landable_bodies
+  end
+
   scenario "Stage 1: Must choose destination" do
     given_i_am_at_the_choose_destination_stage
     when_i_fail_to_make_a_choice

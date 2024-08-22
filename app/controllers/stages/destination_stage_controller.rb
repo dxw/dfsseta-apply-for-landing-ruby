@@ -26,10 +26,6 @@ class Stages::DestinationStageController < ApplicationController
 
   private
 
-  def landable_bodies
-    @landable_bodies = LANDABLE_BODIES
-  end
-
   def answers
     @answers ||= AnswersRepository.new(session)
   end

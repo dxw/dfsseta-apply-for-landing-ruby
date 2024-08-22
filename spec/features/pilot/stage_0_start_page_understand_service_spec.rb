@@ -12,6 +12,11 @@ RSpec.feature "Stage 0: Start page - Pilot understands service before engaging" 
   #   And I should see what information I will need to provide
   #   When I choose to use the service
   #   Then I should find myself on the first stage of the service
+
+  before do
+    create_landable_bodies
+  end
+
   scenario "Stage 0: Start page - pilot reviews information about service" do
     visit "/"
     should_see_what_the_service_can_provide
@@ -70,15 +75,8 @@ RSpec.feature "Stage 0: Start page - Pilot understands service before engaging" 
   end
 
   def should_see_list_of_landable_bodies
-    [
-      "Mars",
-      "Saturn (core)",
-      "International Space Station (ESA)",
-      "Tiangong space station",
-      "Earth's moon",
-      "Pluto"
-    ].each do |landable_body|
-      expect(page).to have_content(landable_body)
+    LandableBody.where(active: true).each do |landable_body|
+      expect(page).to have_content(landable_body.name)
     end
   end
 

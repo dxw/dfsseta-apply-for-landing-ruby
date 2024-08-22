@@ -87,7 +87,7 @@ class Stages::CheckYourAnswersStageController < ApplicationController
   end
 
   def destination_answer
-    LANDABLE_BODIES
+    landable_bodies
       .find { |body| body.id == answers.find(:destination)&.dig("destination_id") }
       &.name
   end
