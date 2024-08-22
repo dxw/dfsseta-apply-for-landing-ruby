@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_20_111300) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_21_164300) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,4 +20,24 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_20_111300) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "landing_applications", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "destination_id", null: false
+    t.string "pilot_email", null: false
+    t.string "pilot_name", null: false
+    t.string "pilot_licence_id", null: false
+    t.string "spacecraft_registration_id", null: false
+    t.date "landing_date", null: false
+    t.date "departure_date", null: false
+    t.string "application_reference", null: false
+    t.datetime "application_submitted_at", null: false
+    t.string "application_decision"
+    t.datetime "application_decision_made_at"
+    t.string "permit_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["destination_id"], name: "index_landing_applications_on_destination_id"
+  end
+
+  add_foreign_key "landing_applications", "landable_bodies", column: "destination_id"
 end

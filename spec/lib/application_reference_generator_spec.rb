@@ -1,8 +1,8 @@
 require "spec_helper"
-require_relative "../../app/lib/submissions_reference_generator"
+require_relative "../../app/lib/application_reference_generator"
 
-RSpec.describe SubmissionsReferenceGenerator do
-  let(:reference) { SubmissionsReferenceGenerator.generate }
+RSpec.describe ApplicationReferenceGenerator do
+  let(:reference) { ApplicationReferenceGenerator.generate }
 
   describe "::generate" do
     it "always applies an 'APL' prefix (Apply for Landing)" do
