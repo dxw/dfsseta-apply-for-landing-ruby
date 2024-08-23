@@ -1,13 +1,13 @@
 class DatesForm
   include ActiveModel::Model
 
-  attr_accessor :landing_date, :departure_date
+  attr_accessor :landing_date, :departure_date, :bank_holidays
   MAXIMUM_PERMITTED_STAY_IN_DAYS = 14
-  BANK_HOLIDAYS = JSON.parse(File.read("#{Rails.root}/config/bank_holidays_uk.json")).dig('england-and-wales', 'events').map{ | event | event.fetch('date')}
 
-  def initialize(landing_date:, departure_date:)
+  def initialize(landing_date:, departure_date:, bank_holidays:)
     @landing_date = landing_date
     @departure_date = departure_date
+    @bank_holidays = bank_holidays
   end
 
   validates :landing_date, presence: {message: "Enter a landing date"}
@@ -39,11 +39,11 @@ class DatesForm
   def ensure_dates_do_not_fall_on_bank_holidays
     return unless landing_date && departure_date
 
-    if BANK_HOLIDAYS.include?(landing_date.to_s)
+    if bank_holidays.include?(landing_date.to_s)
       errors.add(:landing_date, "Landing date must not fall on a bank holiday")
     end
 
-    if BANK_HOLIDAYS.include?(departure_date.to_s)
+    if bank_holidays.include?(departure_date.to_s)
       errors.add(:departure_date, "Departure date must not fall on a bank holiday")
     end
   end

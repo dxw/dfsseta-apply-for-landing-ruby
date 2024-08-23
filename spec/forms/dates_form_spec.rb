@@ -1,7 +1,7 @@
 RSpec.describe DatesForm do
   describe "it validates presence of landing_date" do
     context "when landing_date is missing" do
-      let(:form) { DatesForm.new(landing_date: nil, departure_date: Date.today) }
+      let(:form) { DatesForm.new(landing_date: nil, departure_date: Date.today, bank_holidays: []) }
 
       it "should flag an error" do
         form.valid?
@@ -14,7 +14,7 @@ RSpec.describe DatesForm do
     end
 
     context "when landing_date is present" do
-      let(:form) { DatesForm.new(landing_date: Date.today + 1.week, departure_date: Date.today + 2.weeks) }
+      let(:form) { DatesForm.new(landing_date: Date.today + 1.week, departure_date: Date.today + 2.weeks, bank_holidays: []) }
 
       it "should NOT flag an error" do
         form.valid?
@@ -26,7 +26,7 @@ RSpec.describe DatesForm do
 
   describe "it validates presence of departure_date" do
     context "when departure_date is missing" do
-      let(:form) { DatesForm.new(landing_date: Date.today, departure_date: nil) }
+      let(:form) { DatesForm.new(landing_date: Date.today, departure_date: nil, bank_holidays: []) }
 
       it "should flag an error" do
         form.valid?
@@ -39,7 +39,7 @@ RSpec.describe DatesForm do
     end
 
     context "when departure_date is present" do
-      let(:form) { DatesForm.new(landing_date: Date.today + 1.week, departure_date: Date.today + 2.weeks) }
+      let(:form) { DatesForm.new(landing_date: Date.today + 1.week, departure_date: Date.today + 2.weeks, bank_holidays: []) }
 
       it "should NOT flag an error" do
         form.valid?
@@ -54,7 +54,7 @@ RSpec.describe DatesForm do
     let(:day_after_tomorrow) { Date.today + 2.days }
 
     context "when departure date IS before landing date" do
-      let(:form) { DatesForm.new(landing_date: day_after_tomorrow, departure_date: tomorrow) }
+      let(:form) { DatesForm.new(landing_date: day_after_tomorrow, departure_date: tomorrow, bank_holidays: ["2025-11-01"]) }
 
       it "should flag an error" do
         form.valid?
@@ -67,7 +67,7 @@ RSpec.describe DatesForm do
     end
 
     context "when departure date is after landing date" do
-      let(:form) { DatesForm.new(landing_date: tomorrow, departure_date: day_after_tomorrow) }
+      let(:form) { DatesForm.new(landing_date: tomorrow, departure_date: day_after_tomorrow, bank_holidays: []) }
 
       it "should NOT flag an error" do
         form.valid?
@@ -77,7 +77,7 @@ RSpec.describe DatesForm do
     end
 
     context "when departure date is the same as landing date" do
-      let(:form) { DatesForm.new(landing_date: tomorrow, departure_date: tomorrow) }
+      let(:form) { DatesForm.new(landing_date: tomorrow, departure_date: tomorrow, bank_holidays: []) }
 
       it "should NOT flag an error" do
         form.valid?
@@ -92,7 +92,7 @@ RSpec.describe DatesForm do
     let(:yesterday) { Date.today - 1.day }
 
     context "when landing date is in the past" do
-      let(:form) { DatesForm.new(landing_date: yesterday, departure_date: tomorrow) }
+      let(:form) { DatesForm.new(landing_date: yesterday, departure_date: tomorrow, bank_holidays: []) }
 
       it "should flag an error" do
         form.valid?
@@ -105,7 +105,7 @@ RSpec.describe DatesForm do
     end
 
     context "when departure date is in the past" do
-      let(:form) { DatesForm.new(landing_date: tomorrow, departure_date: yesterday) }
+      let(:form) { DatesForm.new(landing_date: tomorrow, departure_date: yesterday, bank_holidays: []) }
 
       it "should flag an error" do
         form.valid?
@@ -124,7 +124,7 @@ RSpec.describe DatesForm do
     context "when departure date is less than 14 days after landing date" do
       let(:departure_date) { landing_date + 5.day }
 
-      let(:form) { DatesForm.new(landing_date: landing_date, departure_date: departure_date) }
+      let(:form) { DatesForm.new(landing_date: landing_date, departure_date: departure_date, bank_holidays: []) }
 
       it "should NOT flag an error" do
         form.valid?
@@ -136,7 +136,7 @@ RSpec.describe DatesForm do
     context "when departure date is 14 days after landing date" do
       let(:departure_date) { landing_date + 14.day }
 
-      let(:form) { DatesForm.new(landing_date: landing_date, departure_date: departure_date) }
+      let(:form) { DatesForm.new(landing_date: landing_date, departure_date: departure_date, bank_holidays: []) }
 
       it "should NOT flag an error" do
         form.valid?
@@ -148,7 +148,7 @@ RSpec.describe DatesForm do
     context "when departure date is more than 14 days after landing date" do
       let(:departure_date) { landing_date + 15.day }
 
-      let(:form) { DatesForm.new(landing_date: landing_date, departure_date: departure_date) }
+      let(:form) { DatesForm.new(landing_date: landing_date, departure_date: departure_date, bank_holidays: []) }
 
       it "should flag an error" do
         form.valid?
@@ -161,10 +161,10 @@ RSpec.describe DatesForm do
 
   describe "ensure landing and departure dates do not fall on bank holidays" do
     context "when they fall on bank holidays" do
-      let(:landing_date) { Date.new(Date.today.year + 1, 12, 25) }
-      let(:departure_date) { Date.new(Date.today.year + 1, 12, 26) }
+      let(:landing_date) { Date.new(Date.today.year + 1, 1, 10) }
+      let(:departure_date) { Date.new(Date.today.year + 1, 1, 15) }
 
-      let(:form) { DatesForm.new(landing_date: landing_date, departure_date: departure_date) }
+      let(:form) { DatesForm.new(landing_date: landing_date, departure_date: departure_date, bank_holidays: [landing_date.to_s, departure_date.to_s]) }
 
       it "should flag an error" do
         form.valid?
