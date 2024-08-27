@@ -24,12 +24,7 @@
             <h2 class="govuk-heading-m">Now send your landing application</h2>
             <p class="govuk-body">By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
 
-            <%= form_tag(submissions_path) do -%>
-              <button class="govuk-button" data-module="govuk-button">
-                Confirm and apply
-              </button>
-            <% end -%>
-
+            <%= govuk_button_to "Confirm and apply", submissions_path %>
           </div>
         </div>
       </article>
