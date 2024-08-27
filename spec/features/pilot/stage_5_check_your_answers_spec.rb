@@ -17,6 +17,7 @@ RSpec.feature "Stage 5: Check your answers" do
 
     when_i_confirm_that_i_ve_reviewed_my_answers_and_wish_to_apply
     then_i_receive_an_application_confirmation
+    and_i_can_start_a_new_blank_application
   end
 
   scenario "Change answers" do
@@ -92,7 +93,28 @@ RSpec.feature "Stage 5: Check your answers" do
     expect(page).to have_content("We aim to contact you with a decision within 3 working days")
   end
 
+  def and_i_can_start_a_new_blank_application
+    begin_a_new_application
+    expect_previous_application_to_have_been_cleared
+  end
+
   # helpers
+
+  def begin_a_new_application
+    click_link("make another application")
+    expect(current_path).to eq("/")
+    expect(page).to have_content(
+      "You can use this service to apply to land on " \
+        "one of several planets and astronomical bodies"
+    )
+    click_link("Start now")
+  end
+
+  def expect_previous_application_to_have_been_cleared
+    within(".destinations") do
+      expect(page).to_not have_checked_field("Saturn (core)")
+    end
+  end
 
   def stages
     @stages ||= [

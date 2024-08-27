@@ -30,4 +30,37 @@ RSpec.describe AnswersRepository do
       expect(session).to have_received(:dig).with(:dates)
     end
   end
+
+  describe "#clear_session - to allow a fresh application for landing" do
+    let(:session) do
+      {
+        "session_id" => "123",
+        "_csrf_token" => "ABC",
+        "dates" => {},
+        "destination" => {"destination_id" => "ABC123"},
+        "another_question" => "another answer"
+      }
+    end
+
+    let(:repository) { AnswersRepository.new(session) }
+
+    it "clears data from keys NOT named 'session_id' or '_csrf_token'" do
+      allow(session).to receive(:delete)
+
+      repository.clear_answers
+
+      expect(session).to have_received(:delete).with("dates")
+      expect(session).to have_received(:delete).with("destination")
+      expect(session).to have_received(:delete).with("another_question")
+    end
+
+    it "leaves keys named 'session_id' or '_csrf_token'" do
+      allow(session).to receive(:delete)
+
+      repository.clear_answers
+
+      expect(session).to_not have_received(:delete).with("session_id")
+      expect(session).to_not have_received(:delete).with("_csrf_token")
+    end
+  end
 end

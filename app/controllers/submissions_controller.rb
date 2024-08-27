@@ -8,6 +8,14 @@ class SubmissionsController < ApplicationController
 
     @application_reference = landing_application.application_reference
 
+    clear_application_from_session
+
     render "successful_submission"
+  end
+
+  private
+
+  def clear_application_from_session
+    AnswersRepository.new(session).clear_answers
   end
 end
