@@ -64,3 +64,51 @@ For bundling JS and CSS you will need:
 
 The local development application is then run using `bin/dev` which asks
 `foreman` to run the app's `Procfile`.
+
+## Tests
+
+### Local unit and integration tests
+
+These tests (Rspec and Capybara) can be run with:
+
+```sh
+bundle exec rspec
+```
+or using either the dockerised or undockerised version of the supplied comprehensive
+test script which includes updates, gem auditing, linting etc, e.g.
+
+```sh
+./script/no-docker/test
+```
+
+### End-to-end (E2E) tests
+
+Our end-to-end tests live in a separate repo [`dxw/dfsseta-apply-for-landing-e2e`][]
+and are written using Playwright.
+
+They have their own repo as we intend to use the same set of tests to exercise each
+implementation of the Apply For Landing model application. i.e. to run against the
+Ruby implementation (here), the .NET version, the Node version etc.
+
+See that repo for more info.
+
+Each merge to the `main` branch triggers the E2E test suite, which run against
+the application [deployed to Heroku][]
+
+
+## Deployment
+
+The application is [deployed to Heroku][] on each merge to `main` by way of a [GitHub
+Action][].
+
+
+[`dxw/dfsseta-apply-for-landing-e2e`]:
+https://github.com/dxw/dfsseta-apply-for-landing-e2e
+
+[GitHub Action]:
+https://github.com/dxw/dfsseta-apply-for-landing-ruby/blob/main/.github/workflows/heroku-deployment.yml
+
+[deployed to Heroku]:
+https://apply-for-landing-ruby-4492c2b72668.herokuapp.com/
+
+
