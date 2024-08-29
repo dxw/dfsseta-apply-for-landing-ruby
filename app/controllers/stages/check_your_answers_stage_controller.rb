@@ -57,7 +57,7 @@ class Stages::CheckYourAnswersStageController < ApplicationController
       ),
 
       CheckYourAnswers::Stage.new(
-        name: "personal_detals",
+        name: "personal_details",
         title: "Personal details",
         link_path: stages_personal_details_path,
         link_text: "personal details",
