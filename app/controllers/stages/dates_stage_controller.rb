@@ -4,14 +4,16 @@ class Stages::DatesStageController < ApplicationController
   def show
     @dates = DatesForm.new(
       landing_date: saved_date("landing_date"),
-      departure_date: saved_date("departure_date")
+      departure_date: saved_date("departure_date"),
+      bank_holidays: BankHolidaysService.load
     )
   end
 
   def update
     @dates = DatesForm.new(
       landing_date: landing_date,
-      departure_date: departure_date
+      departure_date: departure_date,
+      bank_holidays: BankHolidaysService.load
     )
     if @dates.valid?
       answers.save(
