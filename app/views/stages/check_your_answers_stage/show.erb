@@ -7,29 +7,29 @@
           <div class="govuk-grid-column-two-thirds">
 
             <% @stages_questions_and_answers.each do |stage| %>
-               <%=
-                 render(
-                   partial: "summary_card",
-                   locals: {
-                     stage_name: stage.name,
-                     stage_title: stage.title,
-                     link_path: stage.link_path,
-                     link_text: stage.link_text,
-                     questions_and_answers: stage.questions
-                   }
-                 )
-               %>
-             <% end %>
+              <%= govuk_summary_card(
+                title: stage.title,
+                html_attributes: {"class" => "stage", "data-stage" => stage.name}) do |card|
+
+                card.with_action {
+                  govuk_link_to 'Change',
+                  stage.link_path, visually_hidden_suffix: stage.link_text
+                }
+
+                card.with_summary_list(rows: stage.questions.map { |q|
+                  {
+                    key: {text: q.title},
+                    value: {text: q.answer},
+                    html_attributes: {"data-question" => q.ref, "class" => "question"}
+                  }
+                })
+              end %>
+            <% end %>
 
             <h2 class="govuk-heading-m">Now send your landing application</h2>
             <p class="govuk-body">By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
 
-            <%= form_tag(submissions_path) do -%>
-              <button class="govuk-button" data-module="govuk-button">
-                Confirm and apply
-              </button>
-            <% end -%>
-
+            <%= govuk_button_to "Confirm and apply", submissions_path %>
           </div>
         </div>
       </article>
