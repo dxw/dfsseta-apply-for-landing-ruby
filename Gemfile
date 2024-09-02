@@ -58,3 +58,5 @@ group :test do
   gem "climate_control"
   gem "timecop"
 end
+
+gem "devise", "~> 4.9"
