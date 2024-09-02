@@ -1,0 +1,17 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  triggerE2eTests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger E2E tests in separate repo
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.PAT }}
+          repository: dxw/dfsseta-apply-for-landing-e2e
+          event-type: trigger-e2e-tests
+          client-payload:
+            '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
