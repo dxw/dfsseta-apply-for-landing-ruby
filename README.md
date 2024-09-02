@@ -111,4 +111,9 @@ https://github.com/dxw/dfsseta-apply-for-landing-ruby/blob/main/.github/workflow
 [deployed to Heroku]:
 https://apply-for-landing-ruby-4492c2b72668.herokuapp.com/
 
+### Environment variables 
 
+The following environment variables must be set on Heroku;
+
+- `HOSTNAME`: currently `apply-for-landing-ruby-4492c2b72668.herokuapp.com`
+  (the "Web URL" is shown with `heroku info`)
