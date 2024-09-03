@@ -1,0 +1,39 @@
+<main class="govuk-main-wrapper">
+  <section class="container">
+    <h1 class='govuk-heading-l'>Landing applications</h1>
+
+    <%= govuk_table do |table|
+      table.with_caption(size: 'm', text: 'Applications to assess')
+      
+      table.with_head do |head|
+        head.with_row do |row|
+          row.with_cell(text: 'Pilot name')
+          row.with_cell(text: 'Pilot email')
+          row.with_cell(text: 'Destination')
+          row.with_cell(text: 'Landing date')
+          row.with_cell(text: 'Departure date')
+          row.with_cell(text: 'Application date')
+          row.with_cell(text: 'Decision')      
+        end
+      end
+
+      table.with_body do |body|
+        @landing_applications.each do |application|
+          body.with_row do |row|
+            row.with_cell(text: application.pilot_name)
+            row.with_cell(text: application.pilot_email)
+            row.with_cell(text: application.destination.name)
+            row.with_cell(text: application.landing_date)
+            row.with_cell(text: application.departure_date)
+            row.with_cell(text: application.application_submitted_at.to_date, html_attributes: { id: "submission-date" })
+            row.with_cell(text: '')
+          end
+        end
+      end
+
+    end
+      
+      %>
+
+  </section>
+</main>
