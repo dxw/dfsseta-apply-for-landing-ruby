@@ -1,9 +1,10 @@
 <% # Rails flash messages styled for Bootstrap 4.0 %>
 <% flash.each do |name, msg| %>
   <% if msg.is_a?(String) %>
-    <div class="alert alert-<%= name.to_s == "notice" ? "success" : "danger" %>" role="alert">
-      <button aria-hidden="true" class="close" data-dismiss="alert" type="button">&times;</button>
-      <%= content_tag :div, msg, id: "flash_#{name}" %>
+  <div class="govuk-width-container govuk-!-margin-top-2">
+    <div class="govuk-grid-column-two-thirds alert alert-<%= name.to_s == "notice" ? "success" : "danger" %>" role="alert">
+      <%= govuk_notification_banner(title_text: "Important", text: msg, success: name.to_s == "notice" ) %>
+    </div>
     </div>
   <% end %>
 <% end %>
