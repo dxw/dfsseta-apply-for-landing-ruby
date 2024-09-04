@@ -66,6 +66,10 @@ Rails.application.configure do
   # Set a css_compressor so sassc-rails does not overwrite the compressor when running the tests
   config.assets.css_compressor = nil
 
+  # Raises StrictLoadingViolationError if lazily loading records
+  # in order to guard against N+1 queries
+  config.active_record.action_on_strict_loading_violation = :raise
+
   config.after_initialize do
     Bullet.enable = true
     Bullet.bullet_logger = true

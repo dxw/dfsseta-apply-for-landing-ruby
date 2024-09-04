@@ -101,6 +101,11 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
+  # Logs (rather than raises) if lazily loading records
+  # in order to warn of N+1 queries.
+  # In other environments we raise StrictLoadingViolationError
+  config.active_record.action_on_strict_loading_violation = :log
+
   # See https://github.com/rails/rails/issues/29893
   # This only allows hosts the application can trust when using `url_for` and related helpers
   if ENV["CANONICAL_HOSTNAME"].present?
