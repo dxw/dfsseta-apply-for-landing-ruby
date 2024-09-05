@@ -25,6 +25,14 @@ module ApplyForLandingRuby
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 
+    # Alert if lazily loading records in order to guard against N+1 queries.
+    # (we disable strict_loading if we're in a console session)
+    # Individual environments specify whether to raise StrictLoadingViolationError:
+    #   - raises in development and test
+    #   - logs in production
+    config.active_record.strict_loading_by_default = !["rails_console", "bin/rails"]
+      .include?($PROGRAM_NAME)
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
