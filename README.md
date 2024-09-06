@@ -49,6 +49,8 @@ until all information has been supplied in the correct format. As a result,
 Stage 7 (approval) can be assumed to occur automatically once the first 6 stages
 are complete.
 
+A separate journey allows DfSSETA officers to view and assess applications.
+
 ## Terminology
 
 See
