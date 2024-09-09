@@ -28,6 +28,10 @@ Rails.application.routes.draw do
     get :"landing-applications", to: "landing_applications#index"
   end
 
+  namespace :api do
+    get :"landing-applications", to: "landing_applications#index"
+  end
+
   resource :submissions, only: :create
 
   # If the CANONICAL_HOSTNAME env var is present, and the request doesn't come from that

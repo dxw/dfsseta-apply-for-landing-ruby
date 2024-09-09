@@ -1,0 +1,23 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/landing-applications":
+    get:
+      summary: Retrieves a list of landing applications
+      tags:
+      - Landing applications
+      responses:
+        '200':
+          description: success
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:3000
