@@ -48,6 +48,20 @@ RSpec.describe "API: landing-applications", type: :request do
         produces "application/json"
 
         response "200", "success" do
+          after do |example|
+            content = example.metadata[:response][:content] || {}
+            example_spec = {
+              "application/json" => {
+                examples: {
+                  test_example: {
+                    value: JSON.parse(response.body, symbolize_names: true)
+                  }
+                }
+              }
+            }
+            example.metadata[:response][:content] = content.deep_merge(example_spec)
+          end
+
           run_test! do |response|
             data = JSON.parse(response.body)
             expected_data = JSON.parse(expected_json_representation)

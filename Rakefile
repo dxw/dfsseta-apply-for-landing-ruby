@@ -8,4 +8,14 @@ require_relative "config/application"
 Rails.application.load_tasks
 
 desc "Run all the tests"
-task default: %i[spec standard]
+task default: %i[spec rswag_api_tests_with_docs standard]
+
+desc "Run Rswag API test with auto documentation"
+task :rswag_api_tests_with_docs do
+  # run the api specs with the Rswag formatter which creates
+  # our OpenAPI spec
+  system "bundle exec rspec " \
+         "--pattern  'spec/api/**/*_spec.rb' " \
+         "--format Rswag::Specs::SwaggerFormatter " \
+         "--order defined"
+end
