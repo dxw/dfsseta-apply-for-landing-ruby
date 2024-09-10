@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  mount Rswag::Ui::Engine => "/api-docs"
+  mount Rswag::Api::Engine => "/api-docs"
+
   get "health_check" => "application#health_check"
   root to: "pilots#start"
 
@@ -22,6 +25,10 @@ Rails.application.routes.draw do
   end
 
   namespace :officer do
+    get :"landing-applications", to: "landing_applications#index"
+  end
+
+  namespace :api do
     get :"landing-applications", to: "landing_applications#index"
   end
 

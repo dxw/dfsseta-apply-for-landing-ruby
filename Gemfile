@@ -26,6 +26,8 @@ gem "cssbundling-rails"
 gem "govuk_design_system_formbuilder"
 gem "govuk-components"
 gem "terser"
+gem "rswag-api"
+gem "rswag-ui"
 gem "seed-fu"
 
 group :development do
@@ -43,6 +45,7 @@ group :development, :test do
   gem "factory_bot_rails"
   gem "faker"
   gem "rspec-rails"
+  gem "rswag-specs"
   gem "standard"
 end
 
