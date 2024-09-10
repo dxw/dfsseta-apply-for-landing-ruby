@@ -13,6 +13,7 @@ RSpec.feature "Officer views list of landing applications" do
 
   before do
     create_applications
+    sign_in FactoryBot.create(:user)
   end
 
   scenario "Officer views list of landing applications" do

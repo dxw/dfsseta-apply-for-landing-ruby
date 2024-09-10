@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get "health_check" => "application#health_check"
   root to: "pilots#start"
 
+  devise_for :user
+
   namespace :stages do
     get :destination, to: "destination_stage#show"
     put :destination, to: "destination_stage#update"

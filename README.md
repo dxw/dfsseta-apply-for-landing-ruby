@@ -49,6 +49,8 @@ until all information has been supplied in the correct format. As a result,
 Stage 7 (approval) can be assumed to occur automatically once the first 6 stages
 are complete.
 
+A separate journey allows DfSSETA officers to view and assess applications.
+
 ## Terminology
 
 See
@@ -111,4 +113,9 @@ https://github.com/dxw/dfsseta-apply-for-landing-ruby/blob/main/.github/workflow
 [deployed to Heroku]:
 https://apply-for-landing-ruby-4492c2b72668.herokuapp.com/
 
+### Environment variables 
 
+The following environment variables must be set on Heroku;
+
+- `HOSTNAME`: currently `apply-for-landing-ruby-4492c2b72668.herokuapp.com`
+  (the "Web URL" is shown with `heroku info`)
