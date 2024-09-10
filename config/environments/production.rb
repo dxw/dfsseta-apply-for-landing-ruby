@@ -140,5 +140,5 @@ Rails.application.configure do
   config.lograge.enabled = true
 
   # Default URL for Devise
-  config.action_mailer.default_url_options = {host: "https://#{ENV.fetch(HOSTNAME)}"}
+  config.action_mailer.default_url_options = {host: "https://#{ENV.fetch("HOSTNAME")}"}
 end
