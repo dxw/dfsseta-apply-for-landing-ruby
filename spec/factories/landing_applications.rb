@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :landing_application do
     association(:destination, factory: :landable_body)
+    association(:assessor, factory: :user)
     pilot_email { "alan@nasa.org.uk" }
     pilot_name { "Alan Oliver" }
     pilot_licence_id { "1233ABC00123" }
