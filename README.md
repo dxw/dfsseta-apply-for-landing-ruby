@@ -71,14 +71,42 @@ The local development application is then run using `bin/dev` which asks
 
 ### Local unit and integration tests
 
-These tests (Rspec and Capybara) can be run with:
+#### Fast feedback loop
+
+These tests (Rspec and Capybara) can be run at maximum speed with:
 
 ```sh
 bundle exec rspec
 ```
 
-or using either the dockerised or undockerised version of the supplied
-comprehensive test script which includes updates, gem auditing, linting etc,
+To run individual API specs with auto-generation of the OpenAPI spec, you need
+to specify the use the Rswag "formatter" e.g:
+
+```sh
+bundle exec rspec  --format Rswag::Specs::SwaggerFormatter \
+       spec/api/landing_applications_spec.rb
+```
+
+### Full pre-commit checks
+
+Before committing you should run our complete set of checks and tests.
+
+This is especially important if working on the API code as we're using the Rswag
+tooling to generate our OpenAPI spec from the integration tests in `spec/api`.
+
+Choose from either the dockerised or undockerised version of the supplied
+comprehensive test script which includes:
+
+- formatting files with `prettier`
+- checking scripts with `shellcheck`
+- linting Ruby files with `standardrb`
+- linting JS with `eslint`
+- linting CSS with `stylelint`
+- running automated test suite with `rspec`
+- running API specs and generating OpenAPI spec via the
+  `rswag_api_tests_with_docs` `rake` task
+- analysing vulnerabilities in Ruby gems with `brakeman`
+
 e.g.
 
 ```sh
