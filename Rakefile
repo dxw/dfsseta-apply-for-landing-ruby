@@ -18,4 +18,7 @@ task :rswag_api_tests_with_docs do
          "--pattern  'spec/api/**/*_spec.rb' " \
          "--format Rswag::Specs::SwaggerFormatter " \
          "--order defined"
+
+  # Format the generated API spec with our linter
+  system "npx prettier --write 'swagger/**/*'"
 end
