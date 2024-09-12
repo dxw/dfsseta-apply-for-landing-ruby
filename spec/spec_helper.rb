@@ -101,3 +101,9 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 end
+
+def create_applications
+  FactoryBot.create(:landing_application, pilot_name: "Jane", application_submitted_at: Time.new(2022), assessor_id: nil)
+  FactoryBot.create(:landing_application, pilot_name: "Fred", application_submitted_at: Time.new(2023), assessor_id: nil)
+  FactoryBot.create(:landing_application, pilot_name: "Sam", application_submitted_at: Time.new(2024), assessor_id: nil)
+end

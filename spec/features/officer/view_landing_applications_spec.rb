@@ -42,10 +42,4 @@ RSpec.feature "Officer views list of landing applications" do
       expect(page).to have_content(landing_application.departure_date)
     end
   end
-
-  def create_applications
-    FactoryBot.create(:landing_application, pilot_name: "Jane", application_submitted_at: Time.new(2022))
-    FactoryBot.create(:landing_application, pilot_name: "Fred", application_submitted_at: Time.new(2023))
-    FactoryBot.create(:landing_application, pilot_name: "Sam", application_submitted_at: Time.new(2024))
-  end
 end
