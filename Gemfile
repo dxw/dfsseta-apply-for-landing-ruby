@@ -35,6 +35,8 @@ group :development do
   gem "listen", ">= 3.0.5", "< 3.10"
   gem "rails_layout"
   gem "web-console", ">= 3.3.0"
+  gem "htmlbeautifier"
+  gem "solargraph"
 end
 
 group :development, :test do
