@@ -71,13 +71,43 @@ The local development application is then run using `bin/dev` which asks
 
 ### Local unit and integration tests
 
-These tests (Rspec and Capybara) can be run with:
+#### Fast feedback loop
+
+These tests (Rspec and Capybara) can be run at maximum speed with:
 
 ```sh
 bundle exec rspec
 ```
-or using either the dockerised or undockerised version of the supplied comprehensive
-test script which includes updates, gem auditing, linting etc, e.g.
+
+To run individual API specs with auto-generation of the OpenAPI spec, you need
+to specify the use the Rswag "formatter" e.g:
+
+```sh
+bundle exec rspec  --format Rswag::Specs::SwaggerFormatter \
+       spec/api/landing_applications_spec.rb
+```
+
+### Full pre-commit checks
+
+Before committing you should run our complete set of checks and tests.
+
+This is especially important if working on the API code as we're using the Rswag
+tooling to generate our OpenAPI spec from the integration tests in `spec/api`.
+
+Choose from either the dockerised or undockerised version of the supplied
+comprehensive test script which includes:
+
+- formatting files with `prettier`
+- checking scripts with `shellcheck`
+- linting Ruby files with `standardrb`
+- linting JS with `eslint`
+- linting CSS with `stylelint`
+- running automated test suite with `rspec`
+- running API specs and generating OpenAPI spec via the
+  `rswag_api_tests_with_docs` `rake` task
+- analysing vulnerabilities in Ruby gems with `brakeman`
+
+e.g.
 
 ```sh
 ./script/no-docker/test
@@ -85,37 +115,32 @@ test script which includes updates, gem auditing, linting etc, e.g.
 
 ### End-to-end (E2E) tests
 
-Our end-to-end tests live in a separate repo [`dxw/dfsseta-apply-for-landing-e2e`][]
-and are written using Playwright.
+Our end-to-end tests live in a separate repo
+[`dxw/dfsseta-apply-for-landing-e2e`][] and are written using Playwright.
 
-They have their own repo as we intend to use the same set of tests to exercise each
-implementation of the Apply For Landing model application. i.e. to run against the
-Ruby implementation (here), the .NET version, the Node version etc.
+They have their own repo as we intend to use the same set of tests to exercise
+each implementation of the Apply For Landing model application. i.e. to run
+against the Ruby implementation (here), the .NET version, the Node version etc.
 
 See that repo for more info.
 
 Each merge to the `main` branch triggers the E2E test suite, which run against
 the application [deployed to Heroku][]
 
-
 ## Deployment
 
-The application is [deployed to Heroku][] on each merge to `main` by way of a [GitHub
-Action][].
+The application is [deployed to Heroku][] on each merge to `main` by way of a
+[GitHub Action][].
 
-
-[`dxw/dfsseta-apply-for-landing-e2e`]:
-https://github.com/dxw/dfsseta-apply-for-landing-e2e
-
-[GitHub Action]:
-https://github.com/dxw/dfsseta-apply-for-landing-ruby/blob/main/.github/workflows/heroku-deployment.yml
-
-[deployed to Heroku]:
-https://apply-for-landing-ruby-4492c2b72668.herokuapp.com/
-
-### Environment variables 
+### Environment variables
 
 The following environment variables must be set on Heroku;
 
-- `HOSTNAME`: currently `apply-for-landing-ruby-4492c2b72668.herokuapp.com`
-  (the "Web URL" is shown with `heroku info`)
+- `HOSTNAME`: currently `apply-for-landing-ruby-4492c2b72668.herokuapp.com` (the
+  "Web URL" is shown with `heroku info`)
+
+[`dxw/dfsseta-apply-for-landing-e2e`]:
+  https://github.com/dxw/dfsseta-apply-for-landing-e2e
+[GitHub Action]:
+  https://github.com/dxw/dfsseta-apply-for-landing-ruby/blob/main/.github/workflows/heroku-deployment.yml
+[deployed to Heroku]: https://apply-for-landing-ruby-4492c2b72668.herokuapp.com/

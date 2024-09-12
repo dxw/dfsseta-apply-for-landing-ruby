@@ -56,6 +56,9 @@ else
   echo "==> Running the tests..."
   bundle exec rspec
 
+  echo "==> Running the RSwag API tests with auto-documentation..."
+  bundle exec rake rswag_api_tests_with_docs RAILS_ENV=test
+
   echo "==> Running Brakeman..."
   bundle exec brakeman -o /dev/stdout
 fi
