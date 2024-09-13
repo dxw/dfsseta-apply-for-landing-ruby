@@ -39,12 +39,12 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_16_110956) do
     t.date "departure_date", null: false
     t.string "application_reference", null: false
     t.datetime "application_submitted_at", null: false
-    t.string "application_decision"
     t.datetime "application_decision_made_at"
     t.string "permit_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.uuid "assessor_id"
+    t.integer "application_decision"
     t.index ["assessor_id"], name: "index_landing_applications_on_assessor_id"
     t.index ["destination_id"], name: "index_landing_applications_on_destination_id"
   end
