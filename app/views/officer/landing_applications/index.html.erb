@@ -26,7 +26,7 @@
             row.with_cell(text: application.landing_date)
             row.with_cell(text: application.departure_date)
             row.with_cell(text: application.application_submitted_at.to_date, html_attributes: { id: "submission-date" })
-            row.with_cell(text: '')
+            application.application_decision ? row.with_cell(text: application.application_decision.capitalize, html_attributes: { id: "application-#{application.id}" }) : row.with_cell {govuk_button_link_to 'Make a decision', new_officer_landing_application_decision_path(landing_application_id: application.id), class: "govuk-!-margin-bottom-0", html_attributes: { id: "application-#{application.id}" }}
           end
         end
       end
