@@ -67,6 +67,17 @@ For bundling JS and CSS you will need:
 The local development application is then run using `bin/dev` which asks
 `foreman` to run the app's `Procfile`.
 
+### Seeding
+
+The database is seeded using the [Seed Fu gem][] with seeds defined in
+`db/fixtures` as follows:
+
+- landable bodies: in all environments
+- landing applications: in development environment only
+
+The seeding can be run manually with `bundle exec rake db:seed_fu`. This is run
+automatically on deployment to Heroku. See the [Procfile](./Procfile).
+
 ## Tests
 
 ### Local unit and integration tests
@@ -139,6 +150,7 @@ The following environment variables must be set on Heroku;
 - `HOSTNAME`: currently `apply-for-landing-ruby-4492c2b72668.herokuapp.com` (the
   "Web URL" is shown with `heroku info`)
 
+[Seed Fu gem]: https://github.com/mbleigh/seed-fu
 [`dxw/dfsseta-apply-for-landing-e2e`]:
   https://github.com/dxw/dfsseta-apply-for-landing-e2e
 [GitHub Action]:
