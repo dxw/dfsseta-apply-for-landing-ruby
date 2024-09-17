@@ -161,6 +161,8 @@ The following environment variables must be set on Heroku;
 
 - `HOSTNAME`: currently `apply-for-landing-ruby-4492c2b72668.herokuapp.com` (the
   "Web URL" is shown with `heroku info`)
+- `API_KEY_HMAC_SECRET_KEY`: the secret used for generating digests of API keys.
+  Generate with `SecureRandom.hex(32)` for production use.
 
 [Seed Fu gem]: https://github.com/mbleigh/seed-fu
 [`dxw/dfsseta-apply-for-landing-e2e`]:
