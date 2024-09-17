@@ -57,6 +57,18 @@ See
 [ADR 0012: Standard terminology for the Apply for Landing service](./doc/architecture/decisions/0012-standard-terminology.md)
 for details of how we refer to the entities within this domain.
 
+## API
+
+As well as the principal service, which is delivered using the [GOV.UK
+Design System][], a JSON API is offered to authorised users, such as arrival
+authorities on Landable Bodies. See the [OpenAPI documentation][]. Authentication
+is by way of an API key, passed in a header, e.g.
+
+```sh
+curl "https://apply-for-landing-ruby-4492c2b72668.herokuapp.com/api/landing-applications" \
+     -H 'X-API-KEY: my-secret-api-key'
+```
+
 ## Local development
 
 For bundling JS and CSS you will need:
@@ -156,3 +168,6 @@ The following environment variables must be set on Heroku;
 [GitHub Action]:
   https://github.com/dxw/dfsseta-apply-for-landing-ruby/blob/main/.github/workflows/heroku-deployment.yml
 [deployed to Heroku]: https://apply-for-landing-ruby-4492c2b72668.herokuapp.com/
+[GOV.UK Design System]: https://design-system.service.gov.uk
+[OpenAPI documentation]:
+  https://apply-for-landing-ruby-4492c2b72668.herokuapp.com/api-docs/
