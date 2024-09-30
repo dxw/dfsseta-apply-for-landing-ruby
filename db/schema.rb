@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_02_130630) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_13_140449) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,11 +31,13 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_02_130630) do
     t.date "departure_date", null: false
     t.string "application_reference", null: false
     t.datetime "application_submitted_at", null: false
-    t.string "application_decision"
     t.datetime "application_decision_made_at"
     t.string "permit_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.uuid "assessor_id"
+    t.integer "application_decision"
+    t.index ["assessor_id"], name: "index_landing_applications_on_assessor_id"
     t.index ["destination_id"], name: "index_landing_applications_on_destination_id"
   end
 
@@ -52,4 +54,5 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_02_130630) do
   end
 
   add_foreign_key "landing_applications", "landable_bodies", column: "destination_id"
+  add_foreign_key "landing_applications", "users", column: "assessor_id"
 end

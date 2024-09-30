@@ -27,7 +27,9 @@ Rails.application.routes.draw do
   end
 
   namespace :officer do
-    get :"landing-applications", to: "landing_applications#index"
+    resources :landing_applications, path: "landing-applications", only: :index do
+      resources :decisions, only: [:new, :create]
+    end
   end
 
   namespace :api do
