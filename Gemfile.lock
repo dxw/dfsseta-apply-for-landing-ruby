@@ -316,7 +316,7 @@ GEM
       railties (>= 5.2)
     reverse_markdown (2.1.1)
       nokogiri
-    rexml (3.3.7)
+    rexml (3.3.9)
     rollbar (3.6.0)
     rouge (1.11.1)
     rspec-core (3.12.3)
