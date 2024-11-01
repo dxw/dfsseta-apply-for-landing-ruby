@@ -5,6 +5,13 @@ RSpec.describe "API: landing-applications", type: :request do
     let(:decision_timestamp) { Time.current + 1.week }
     let(:landing_date) { Date.today + 1.month }
     let(:departure_date) { Date.today + 1.month + 1.week }
+    let(:valid_api_token) { ApiKey.create(api_client_name: "Test").unhashed_token }
+
+    around do |example|
+      ClimateControl.modify API_KEY_HMAC_SECRET_KEY: "secret-key" do
+        example.run
+      end
+    end
 
     before do
       FactoryBot.create(:landing_application, {
@@ -45,6 +52,7 @@ RSpec.describe "API: landing-applications", type: :request do
     path "/api/landing-applications" do
       get "Retrieves a list of landing applications" do
         tags "Landing applications"
+        security [api_key: []]
         produces "application/json"
 
         response "200", "success" do
@@ -62,12 +70,18 @@ RSpec.describe "API: landing-applications", type: :request do
             example.metadata[:response][:content] = content.deep_merge(example_spec)
           end
 
+          let(:"X-API-KEY") { valid_api_token }
           run_test! do |response|
             data = JSON.parse(response.body)
             expected_data = JSON.parse(expected_json_representation)
 
             expect(data).to eq(expected_data)
           end
+        end
+
+        response "401", "invalid credentials" do
+          let(:"X-API-KEY") { "rubbish" }
+          run_test!
         end
       end
     end
