@@ -198,7 +198,7 @@ GEM
     listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    logger (1.6.1)
+    logger (1.6.2)
     lograge (0.14.0)
       actionpack (>= 4)
       activesupport (>= 4)
@@ -218,7 +218,7 @@ GEM
     mini_mime (1.1.5)
     mini_racer (0.6.4)
       libv8-node (~> 16.19.0.0)
-    minitest (5.25.1)
+    minitest (5.25.4)
     msgpack (1.7.2)
     net-imap (0.4.17)
       date
@@ -372,7 +372,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    securerandom (0.3.1)
+    securerandom (0.3.2)
     seed-fu (2.3.9)
       activerecord (>= 3.1)
       activesupport (>= 3.1)
