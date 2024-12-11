@@ -9,6 +9,8 @@ paths:
       summary: Retrieves a list of landing applications
       tags:
         - Landing applications
+      security:
+        - api_key: []
       responses:
         "200":
           description: success
@@ -18,16 +20,26 @@ paths:
                 test_example:
                   value:
                     - application_id: f5f81284-e377-4017-aab1-1efac2119a2c
-                      destination: Planet X
                       pilot:
                         name: Fred Smith
                         email: fred@example.com
                         licence_id: 1233ABC00123
-                      permit_issued_at: "2024-09-18T07:53:21Z"
+                      permit_issued_at: "2024-09-24T10:28:31Z"
                       permit_id: LP-3522-HNWD
+                      destination: Planet X
+                      landing_date: "2024-10-17"
+                      departure_date: "2024-10-24"
                       spacecraft_registration_id: ABC123A
-                      landing_date: "2024-10-11"
-                      departure_date: "2024-10-18"
+        "401":
+          description: invalid credentials
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: X-API-KEY
+      in: header
+security:
+  - api_key: []
 servers:
   - url: https://{defaultHost}
     variables:

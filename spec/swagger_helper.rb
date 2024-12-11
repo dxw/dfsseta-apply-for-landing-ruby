@@ -22,6 +22,18 @@ RSpec.configure do |config|
         version: "v1"
       },
       paths: {},
+      components: {
+        securitySchemes: {
+          api_key: {
+            type: :apiKey,
+            name: "X-API-KEY",
+            in: :header
+          }
+        }
+      },
+      security: [
+        api_key: []
+      ],
       servers: [
         {
           url: "https://{defaultHost}",
