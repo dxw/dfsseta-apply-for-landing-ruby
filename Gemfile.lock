@@ -198,7 +198,7 @@ GEM
     listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    logger (1.6.2)
+    logger (1.6.4)
     lograge (0.14.0)
       actionpack (>= 4)
       activesupport (>= 4)
@@ -372,7 +372,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    securerandom (0.4.0)
+    securerandom (0.4.1)
     seed-fu (2.3.9)
       activerecord (>= 3.1)
       activesupport (>= 3.1)
