@@ -1,0 +1,17 @@
+<main class="govuk-main-wrapper">
+  <section class="container">
+    <h1 class='govuk-heading-l'>Assess a landing application</h1>
+  
+    <%= form_for @application_decision, method: :post, url: officer_landing_application_decisions_path do |form| -%>
+      <%= form.govuk_error_summary %>
+      
+      <%= form.govuk_radio_buttons_fieldset :application_decision, legend: { text: 'Do you approve this application for landing?' } do %>
+        <%= form.govuk_radio_button :application_decision, 'approved', label: { text: 'Approve' }, link_errors: true %>
+        <%= form.govuk_radio_button :application_decision, 'denied', label: { text: 'Deny' } %>
+      <% end %>
+      
+      <%= form.govuk_submit "Save and continue"%>
+    <% end %>
+</section>
+</main>
+  

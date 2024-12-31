@@ -16,11 +16,23 @@ class ApplicationSeedHelper
           landing_date = landing_date(temporality: seed.fetch(:temporality))
           s.landing_date = landing_date
           s.departure_date = up_to_twelve_days_ahead(landing_date)
-          s.application_submitted_at = upto_forty_five_days_before(landing_date)
+
+          application_submitted_at = upto_forty_five_days_before(landing_date)
+          s.application_submitted_at = application_submitted_at
+
+          application_decision = [:approved, :denied, nil].sample
+          s.application_decision = application_decision
+          if [:approved, :denied].include?(application_decision)
+            s.application_decision_made_at = between_submission_and_landing_dates(landing_date, application_submitted_at)
+          end
 
           s.application_reference = ApplicationReferenceGenerator.generate
         end
       end
+    end
+
+    def between_submission_and_landing_dates(landing_date, submission_date)
+      rand(submission_date..landing_date)
     end
 
     def up_to_twelve_days_ahead(landing_date)

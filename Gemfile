@@ -29,6 +29,8 @@ gem "terser"
 gem "rswag-api"
 gem "rswag-ui"
 gem "seed-fu"
+gem "devise", "~> 4.9"
+gem "rails-controller-testing"
 
 group :development do
   gem "better_errors"
@@ -60,5 +62,3 @@ group :test do
   gem "climate_control"
   gem "timecop"
 end
-
-gem "devise", "~> 4.9"
