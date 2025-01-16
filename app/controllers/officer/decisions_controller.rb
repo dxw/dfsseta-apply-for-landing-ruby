@@ -4,15 +4,10 @@ class Officer::DecisionsController < ApplicationController
   end
 
   def create
-    application = LandingApplication.find(params[:landing_application_id])
     @application_decision = AssessmentDecisionForm.new(application_decision: params.dig(:assessment_decision_form, "application_decision"))
 
-    application.application_decision = @application_decision.application_decision
-
     if @application_decision.valid?
-      application.application_decision_made_at = Time.current
-      application.assessor = current_user
-      application.save
+      DecisionsService.new(@application_decision.application_decision, params[:landing_application_id], current_user)
       redirect_to(officer_landing_applications_path)
     else
       render :new
