@@ -896,10 +896,10 @@ globjoin@^0.1.4:
   resolved "https://registry.yarnpkg.com/globjoin/-/globjoin-0.1.4.tgz#2f4494ac8919e3767c5cbb691e9f463324285d43"
   integrity sha512-xYfnw62CKG8nLkZBfWbhWwDw02CHty86jfPcc2cr3ZfeuK9ysoVPPEUxf21bAD/rWAgk52SuBrLJlefNy8mvFg==
 
-govuk-frontend@^4.5.0:
-  version "4.9.0"
-  resolved "https://registry.yarnpkg.com/govuk-frontend/-/govuk-frontend-4.9.0.tgz#a09068130fa087e67de25956940cb8280a364372"
-  integrity sha512-zfX+GBUKpWBeV6JwCIawEuI8VRWlskH8Ok8aNUjKOvzo3zIaNbcrv4IOwgy+oSnMoGh67Eeh+vb7+9GFxN2fNg==
+govuk-frontend@^5.0.0:
+  version "5.9.0"
+  resolved "https://registry.yarnpkg.com/govuk-frontend/-/govuk-frontend-5.9.0.tgz#4064ac692019e60f030d6311c49330a6454a5689"
+  integrity sha512-8NzmyoDtRFYyHs413DfNPR8Zo6qw6Q02Mruxml/Yfy+EueaOI/JZ4gVM8d0pqzJmTiMcJuHhvxqYEgBRmqeoyA==
 
 graphemer@^1.4.0:
   version "1.4.0"
