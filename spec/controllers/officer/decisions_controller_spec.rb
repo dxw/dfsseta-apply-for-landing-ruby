@@ -19,7 +19,7 @@ RSpec.describe Officer::DecisionsController do
   end
 
   describe "POST to :create" do
-    context "when a valid decision is submitted"
+    context "when the decision is denied"
     it "updates the application and redirects to the landing applications index page" do
       form = instance_double(AssessmentDecisionForm, "valid?" => true, "application_decision" => "denied")
       allow(AssessmentDecisionForm).to receive(:new).and_return(form)
@@ -31,6 +31,20 @@ RSpec.describe Officer::DecisionsController do
 
       expect(landing_application).to have_received(:save)
       expect(response).to redirect_to(officer_landing_applications_path)
+    end
+
+    context "when the decision is approved"
+    it "records a permit ID on the application" do
+      allow(SecureRandom).to receive(:uuid).and_return("some-permit-id")
+
+      form = instance_double(AssessmentDecisionForm, "valid?" => true, "application_decision" => "approved")
+      allow(AssessmentDecisionForm).to receive(:new).and_return(form)
+      landing_application = instance_double(LandingApplication, "valid?" => true, :save => double, "application_decision=" => "approved", "application_decision_made_at=" => Time.current, "assessor=" => officer)
+      allow(LandingApplication).to receive(:find).and_return(landing_application)
+      allow(landing_application).to receive(:permit_id=).and_return(nil)
+
+      post :create, params: {landing_application_id: "abc123", assessment_decision_form: {application_decision: "approved"}}
+      expect(landing_application).to have_received(:permit_id=).with("some-permit-id")
     end
 
     context "when no decision is submitted"
