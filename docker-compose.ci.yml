@@ -24,7 +24,7 @@ services:
       - test-ci
 
   test-db:
-    image: postgres
+    image: postgres@sha256:1090bc3a8ccfb0b55f78a494d76f8d603434f7e4553543d6e807bc7bd6bbd17f
     environment:
       POSTGRES_DB: app-test
       POSTGRES_USER: postgres
