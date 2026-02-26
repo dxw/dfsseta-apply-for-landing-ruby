@@ -897,9 +897,9 @@ globjoin@^0.1.4:
   integrity sha512-xYfnw62CKG8nLkZBfWbhWwDw02CHty86jfPcc2cr3ZfeuK9ysoVPPEUxf21bAD/rWAgk52SuBrLJlefNy8mvFg==
 
 govuk-frontend@^5.0.0:
-  version "5.10.1"
-  resolved "https://registry.yarnpkg.com/govuk-frontend/-/govuk-frontend-5.10.1.tgz#5534357267919e26e72cdc028bbad1906b4c9ba1"
-  integrity sha512-VmzKE+pkuOqEXhit0cGqic4i2mOQwflfXDiEcsa6Lrqs//rxV5AYf+C71jbREPwQLH4wYSJAlz/GlGoO5nik7Q==
+  version "5.14.0"
+  resolved "https://registry.yarnpkg.com/govuk-frontend/-/govuk-frontend-5.14.0.tgz#d93f1ffa88b0696114509cab86e4ea474006f8e0"
+  integrity sha512-MgfaXswIM6KpXS2T5gltEnzgVLgfM3UoE9+rYkhBiR0suaJ8Let31VZXQZqz9QhiPDbv28fW1nRjIyLujfZIBA==
 
 graphemer@^1.4.0:
   version "1.4.0"
