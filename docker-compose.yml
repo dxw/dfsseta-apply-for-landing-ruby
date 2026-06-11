@@ -8,7 +8,8 @@ services:
         RAILS_ENV: "development"
     command: bin/dev
     ports:
-      - "3000:3000"
+      - "127.0.0.1:3000:3000"
+      - "[::1]:3000:3000"
     depends_on:
       - db
     env_file:
